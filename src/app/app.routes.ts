@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
+import { Dashboard } from './features/dashboard/dashboard';
 import { EventDetailComponent } from './features/events/event-detail/event-detail.component';
 import { EventsListComponent } from './features/events/events-list/events-list.component';
 import { TicketsListComponent } from './features/tickets/tickets-list/tickets-list.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'events', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: Dashboard },
   { path: 'events', component: EventsListComponent },
   { path: 'events/:id', component: EventDetailComponent },
   { path: 'tickets', component: TicketsListComponent },
