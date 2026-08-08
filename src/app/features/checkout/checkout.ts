@@ -1,14 +1,15 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { ClipService } from '../../shared/services/clip-service/clip-service';
 
 @Component({
   selector: 'app-checkout',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, MatButtonModule],
   templateUrl: './checkout.html',
   styleUrl: './checkout.scss',
 })
-export class Checkout {
+export class Checkout implements OnInit, AfterViewInit {
   private clipInstance: any;
   private card: any;
   public isSdkLoaded = false;
@@ -19,6 +20,10 @@ export class Checkout {
 
   ngOnInit(): void {
     // const lol = new ClipSDK();
+  }
+
+  ngAfterViewInit(): void {
+    // El formulario requiere que el contenedor del DOM ya exista
     // 1. Cargar el script al inicializar el componente
     this.clipService.loadScript().then((loaded) => {
       if (loaded) {
@@ -28,10 +33,6 @@ export class Checkout {
         console.error('Error al cargar el SDK de Clip');
       }
     });
-  }
-
-  ngAfterViewInit(): void {
-    // El formulario requiere que el contenedor del DOM ya exista
   }
 
   // 2. Inicializar el SDK de Checkout Transparente
