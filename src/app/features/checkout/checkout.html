@@ -1,7 +1,30 @@
 <!-- Formulario para obtener el token de la tarjeta -->
-<form id="payment-form" (submit)="onPaySubmit($event)">
+<form id="payment-form" [formGroup]="customerForm" (submit)="onPaySubmit($event)">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" placeholder="ada@example.com" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Teléfono</mat-label>
+    <input matInput type="tel" formControlName="phone" placeholder="5512345678" />
+  </mat-form-field>
+
   <div id="checkout"></div>
-  <button id="submit" matButton="filled">Get Card Token ID</button>
+  <button id="submit" matButton="filled" [disabled]="isProcessing">
+    {{ isProcessing ? 'Procesando...' : 'Pagar' }}
+  </button>
   <p id="cardTokenId"></p>
 </form>
 <br /><br />
+
+@if (pendingAction3ds) {
+  <app-clip-3ds-overlay
+    [url]="pendingAction3ds.url"
+    (paymentIdReceived)="onPaymentIdReceived($event)"
+  ></app-clip-3ds-overlay>
+}
+
+@if (isVerifying3ds) {
+  <p>Verificando el resultado del pago...</p>
+}
