@@ -11,6 +11,14 @@
       "webRoot": "${workspaceFolder}"
     },
     {
+      "name": "Launch Angular App (Secure)",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start-secure",
+      "url": "https://localhost:4200/",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": "Run Angular Tests",
       "type": "pwa-chrome",
       "request": "launch",
