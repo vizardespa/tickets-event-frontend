@@ -9,7 +9,6 @@ export interface Event {
   date: string;
   totalSeats: number;
   availableSeats: number;
-  price: number;
   createdAt: string;
 }
 
@@ -24,5 +23,4 @@ export interface EventRequest {
   date: string;
   totalSeats: number;
   availableSeats?: number;
-  price: number;
 }

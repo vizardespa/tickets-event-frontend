@@ -1,30 +1,67 @@
-<!-- Formulario para obtener el token de la tarjeta -->
-<form id="payment-form" [formGroup]="customerForm" (submit)="onPaySubmit($event)">
-  <mat-form-field appearance="outline">
-    <mat-label>Email</mat-label>
-    <input matInput type="email" formControlName="email" placeholder="ada@example.com" />
-  </mat-form-field>
+@if (loadingContext()) {
+  <div class="flex justify-center py-6">
+    <mat-spinner diameter="32"></mat-spinner>
+  </div>
+} @else if (purchasedTicket(); as ticket) {
+  <div>
+    <h3>¡Pago completado y boleto generado!</h3>
+    <p>Boleto: {{ ticket.id }}</p>
+    <p>Asiento: #{{ ticket.seatNumber }}</p>
+    <p>Enviado a: {{ ticket.ownerEmail }}</p>
+  </div>
+} @else if (ticketCreationError(); as err) {
+  <p class="error">{{ err }}</p>
+} @else {
+  @if (contextError(); as err) {
+    <p class="error">{{ err }}</p>
+  }
 
-  <mat-form-field appearance="outline">
-    <mat-label>Teléfono</mat-label>
-    <input matInput type="tel" formControlName="phone" placeholder="5512345678" />
-  </mat-form-field>
+  @if (event(); as ev) {
+    @if (ticketType(); as tt) {
+      <div class="order-summary">
+        <h3>{{ ev.name }}</h3>
+        <p>{{ tt.name }} — {{ tt.price | currency: 'MXN' }}</p>
+      </div>
+    }
+  }
 
-  <div id="checkout"></div>
-  <button id="submit" matButton="filled" [disabled]="isProcessing">
-    {{ isProcessing ? 'Procesando...' : 'Pagar' }}
-  </button>
-  <p id="cardTokenId"></p>
-</form>
-<br /><br />
+  <!-- Formulario para obtener el token de la tarjeta -->
+  <form id="payment-form" [formGroup]="customerForm" (submit)="onPaySubmit($event)">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre completo</mat-label>
+      <input matInput formControlName="ownerName" placeholder="Ada Lovelace" />
+    </mat-form-field>
 
-@if (pendingAction3ds) {
-  <app-clip-3ds-overlay
-    [url]="pendingAction3ds.url"
-    (paymentIdReceived)="onPaymentIdReceived($event)"
-  ></app-clip-3ds-overlay>
-}
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="ada@example.com" />
+    </mat-form-field>
 
-@if (isVerifying3ds) {
-  <p>Verificando el resultado del pago...</p>
+    <mat-form-field appearance="outline">
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="tel" formControlName="phone" placeholder="5512345678" />
+    </mat-form-field>
+
+    <div id="checkout"></div>
+    <button
+      id="submit"
+      matButton="filled"
+      [disabled]="isProcessing || !canPay || customerForm.invalid"
+    >
+      {{ isProcessing ? 'Procesando...' : 'Pagar' }}
+    </button>
+    <p id="cardTokenId"></p>
+  </form>
+  <br /><br />
+
+  @if (pendingAction3ds) {
+    <app-clip-3ds-overlay
+      [url]="pendingAction3ds.url"
+      (paymentIdReceived)="onPaymentIdReceived($event)"
+    ></app-clip-3ds-overlay>
+  }
+
+  @if (isVerifying3ds) {
+    <p>Verificando el resultado del pago...</p>
+  }
 }

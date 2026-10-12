@@ -3,19 +3,18 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Event } from '../../../shared/models/event.model';
+import { isTicketTypePurchasable, TicketType } from '../../../shared/models/ticket-type.model';
 import { EventService } from '../../../shared/services/event.service';
-import { TicketService } from '../../../shared/services/ticket.service';
-import { BuyTicketDialogComponent, BuyTicketResult } from './buy-ticket-dialog.component';
+import { TicketTypeService } from '../../../shared/services/ticket-type.service';
 
 /**
- * Full details for a single event with a "Buy Ticket" action.
+ * Full details for a single event, listing its ticket types and letting the user start a
+ * purchase (handed off to the Checkout component) for whichever ones are currently on sale.
  */
 @Component({
   selector: 'app-event-detail',
@@ -27,7 +26,6 @@ import { BuyTicketDialogComponent, BuyTicketResult } from './buy-ticket-dialog.c
     MatChipsModule,
     MatDividerModule,
     MatProgressSpinnerModule,
-    MatDialogModule,
     RouterLink,
     DatePipe,
     CurrencyPipe,
@@ -72,13 +70,6 @@ import { BuyTicketDialogComponent, BuyTicketResult } from './buy-ticket-dialog.c
                 </div>
               </div>
               <div class="flex items-center gap-2">
-                <mat-icon class="text-primary">payments</mat-icon>
-                <div>
-                  <div class="text-xs uppercase text-gray-400">Price</div>
-                  <div class="font-medium">{{ ev.price | currency }}</div>
-                </div>
-              </div>
-              <div class="flex items-center gap-2">
                 <mat-icon class="text-primary">event_seat</mat-icon>
                 <div>
                   <div class="text-xs uppercase text-gray-400">Availability</div>
@@ -97,19 +88,53 @@ import { BuyTicketDialogComponent, BuyTicketResult } from './buy-ticket-dialog.c
                 </mat-chip>
               </mat-chip-set>
             </div>
-          </mat-card-content>
 
-          <mat-card-actions align="end">
-            <button
-              mat-flat-button
-              color="primary"
-              [disabled]="ev.availableSeats === 0 || purchasing()"
-              (click)="buyTicket(ev)"
-            >
-              <mat-icon>shopping_cart</mat-icon>
-              {{ purchasing() ? 'Processing...' : 'Buy Ticket' }}
-            </button>
-          </mat-card-actions>
+            <mat-divider></mat-divider>
+
+            <div>
+              <h3 class="mb-2 text-lg font-semibold text-gray-900">Ticket types</h3>
+
+              @if (ticketTypesLoading()) {
+                <div class="flex justify-center py-6">
+                  <mat-spinner diameter="32"></mat-spinner>
+                </div>
+              } @else if (ticketTypes().length === 0) {
+                <p class="text-sm text-gray-500">
+                  No ticket types have been configured for this event yet.
+                </p>
+              } @else {
+                <div class="flex flex-col gap-3">
+                  @for (tt of ticketTypes(); track tt.id) {
+                    <div
+                      class="flex items-center justify-between rounded-lg border border-gray-200 p-3"
+                    >
+                      <div>
+                        <div class="font-medium">{{ tt.name }}</div>
+                        @if (tt.description) {
+                          <div class="text-sm text-gray-500">{{ tt.description }}</div>
+                        }
+                        <div class="text-primary font-semibold">{{ tt.price | currency }}</div>
+                        @if (!isPurchasable(tt)) {
+                          <div class="text-xs text-red-500">
+                            {{ purchaseWindowMessage(tt) }}
+                          </div>
+                        }
+                      </div>
+                      <button
+                        mat-flat-button
+                        color="primary"
+                        [disabled]="ev.availableSeats === 0 || !isPurchasable(tt)"
+                        (click)="buyTicket(ev, tt)"
+                      >
+                        <mat-icon>shopping_cart</mat-icon>
+                        Buy
+                      </button>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </mat-card-content>
         </mat-card>
       }
     </section>
@@ -117,15 +142,15 @@ import { BuyTicketDialogComponent, BuyTicketResult } from './buy-ticket-dialog.c
 })
 export class EventDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly eventService = inject(EventService);
-  private readonly ticketService = inject(TicketService);
-  private readonly dialog = inject(MatDialog);
-  private readonly snackBar = inject(MatSnackBar);
+  private readonly ticketTypeService = inject(TicketTypeService);
 
   readonly event = signal<Event | null>(null);
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
-  readonly purchasing = signal(false);
+  readonly ticketTypes = signal<TicketType[]>([]);
+  readonly ticketTypesLoading = signal(false);
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -134,6 +159,7 @@ export class EventDetailComponent implements OnInit {
       return;
     }
     this.load(id);
+    this.loadTicketTypes(id);
   }
 
   load(id: string): void {
@@ -151,38 +177,37 @@ export class EventDetailComponent implements OnInit {
     });
   }
 
-  buyTicket(ev: Event): void {
-    const ref = this.dialog.open(BuyTicketDialogComponent, {
-      width: '420px',
-      data: { eventName: ev.name },
+  loadTicketTypes(eventId: string): void {
+    this.ticketTypesLoading.set(true);
+    this.ticketTypeService.getByEvent(eventId).subscribe({
+      next: (ticketTypes) => {
+        this.ticketTypes.set(ticketTypes);
+        this.ticketTypesLoading.set(false);
+      },
+      error: () => {
+        this.ticketTypesLoading.set(false);
+      },
     });
+  }
 
-    ref.afterClosed().subscribe((result: BuyTicketResult | null | undefined) => {
-      if (!result) {
-        return;
-      }
-      this.purchasing.set(true);
-      this.ticketService
-        .purchase({
-          eventId: ev.id,
-          ownerName: result.ownerName,
-          ownerEmail: result.ownerEmail,
-        })
-        .subscribe({
-          next: (ticket) => {
-            this.purchasing.set(false);
-            this.snackBar.open(`Ticket purchased! Seat #${ticket.seatNumber}`, 'View', {
-              duration: 5000,
-            });
-            this.load(ev.id);
-          },
-          error: () => {
-            this.purchasing.set(false);
-            this.snackBar.open('Purchase failed. Please try again.', 'Dismiss', {
-              duration: 5000,
-            });
-          },
-        });
+  isPurchasable(ticketType: TicketType): boolean {
+    return isTicketTypePurchasable(ticketType);
+  }
+
+  purchaseWindowMessage(ticketType: TicketType): string {
+    const now = new Date();
+    if (ticketType.purchaseStartAt && now < new Date(ticketType.purchaseStartAt)) {
+      return `Sales open ${new Date(ticketType.purchaseStartAt).toLocaleString()}`;
+    }
+    if (ticketType.purchaseEndAt && now > new Date(ticketType.purchaseEndAt)) {
+      return `Sales ended ${new Date(ticketType.purchaseEndAt).toLocaleString()}`;
+    }
+    return '';
+  }
+
+  buyTicket(ev: Event, ticketType: TicketType): void {
+    this.router.navigate(['/checkout'], {
+      queryParams: { eventId: ev.id, ticketTypeId: ticketType.id },
     });
   }
 }

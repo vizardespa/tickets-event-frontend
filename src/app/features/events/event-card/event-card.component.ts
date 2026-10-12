@@ -1,4 +1,4 @@
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -13,15 +13,7 @@ import { Event } from '../../../shared/models/event.model';
 @Component({
   selector: 'app-event-card',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatChipsModule,
-    RouterLink,
-    DatePipe,
-    CurrencyPipe,
-  ],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, MatChipsModule, RouterLink, DatePipe],
   template: `
     <mat-card class="flex h-full flex-col transition-shadow hover:shadow-lg">
       <mat-card-header>
@@ -42,8 +34,7 @@ import { Event } from '../../../shared/models/event.model';
           <span>{{ event.date | date: 'medium' }}</span>
         </div>
 
-        <div class="mt-auto flex items-center justify-between pt-2">
-          <span class="text-primary text-xl font-bold">{{ event.price | currency }}</span>
+        <div class="mt-auto flex items-center justify-end pt-2">
           <mat-chip-set>
             <mat-chip
               [highlighted]="event.availableSeats > 0"
