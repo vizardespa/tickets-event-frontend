@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { AfterViewInit, Component, input, OnInit, signal } from '@angular/core';
+import { Component, effect, ElementRef, input, OnInit, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,7 +33,7 @@ const CLIP_3DS_STATUS_CODE = 'PE-3DS01';
   templateUrl: './checkout.html',
   styleUrl: './checkout.scss',
 })
-export class Checkout implements OnInit, AfterViewInit {
+export class Checkout implements OnInit {
   /** Can be set directly by a host component, otherwise read from the `/checkout` route's query params. */
   readonly eventId = input<string>();
   readonly ticketTypeId = input<string>();
@@ -43,7 +43,8 @@ export class Checkout implements OnInit, AfterViewInit {
 
   private clipInstance: any;
   private card: any;
-  public isSdkLoaded = false;
+  readonly isSdkLoaded = signal(false);
+  private readonly cardContainer = viewChild<ElementRef<HTMLElement>>('cardContainer');
   public isProcessing = false;
   public isVerifying3ds = false;
   public pendingAction3ds: { url: string } | null = null;
@@ -68,9 +69,18 @@ export class Checkout implements OnInit, AfterViewInit {
     private readonly ticketTypeService: TicketTypeService,
     private readonly ticketService: TicketService,
     private readonly route: ActivatedRoute
-  ) {}
+  ) {
+    // The #checkout container lives inside an @else block, so it only exists after the
+    // context has loaded. Mount the card whenever the SDK is ready and the container appears.
+    effect(() => {
+      if (this.cardContainer() && this.isSdkLoaded()) {
+        this.initializeClipForm();
+      }
+    });
+  }
 
   ngOnInit(): void {
+    this.loadSdk();
     const params = this.route.snapshot.queryParamMap;
     this.resolvedEventId = this.eventId() ?? params.get('eventId') ?? undefined;
     this.resolvedTicketTypeId = this.ticketTypeId() ?? params.get('ticketTypeId') ?? undefined;
@@ -110,13 +120,11 @@ export class Checkout implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    // El formulario requiere que el contenedor del DOM ya exista
-    // 1. Cargar el script al inicializar el componente
+  // 1. Cargar el script del SDK
+  private loadSdk(): void {
     this.clipService.loadScript().then((loaded) => {
       if (loaded) {
-        this.isSdkLoaded = true;
-        this.initializeClipForm();
+        this.isSdkLoaded.set(true);
       } else {
         console.error('Error al cargar el SDK de Clip');
       }
