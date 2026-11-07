@@ -17,16 +17,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   selector: 'app-clip-3ds-overlay',
   standalone: true,
   imports: [],
-  template: `
-    <div class="clip-3ds-overlay">
-      <iframe
-        title="cybersource3Ds"
-        [src]="safeUrl"
-        data-testid="cybersource3Ds-iframe"
-        class="clip-3ds-overlay__iframe"
-      ></iframe>
-    </div>
-  `,
+  templateUrl: './clip-3ds-overlay.component.html',
   styles: [
     `
       .clip-3ds-overlay {
