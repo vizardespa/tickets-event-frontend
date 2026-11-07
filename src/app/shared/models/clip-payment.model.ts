@@ -16,6 +16,12 @@ export interface ClipPaymentRequest {
   userAgent?: string;
   request3ds?: boolean;
   installments?: number;
+  pendingTicket?: {
+    eventId: string;
+    ticketTypeId: string;
+    ownerName: string;
+    ownerEmail: string;
+  };
 }
 
 export interface ClipStatusDetail {

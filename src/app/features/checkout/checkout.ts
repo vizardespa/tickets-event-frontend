@@ -220,6 +220,12 @@ export class Checkout implements OnInit {
         externalReference: `${this.resolvedEventId}:${this.resolvedTicketTypeId}`,
         sessionId: preventionData.session_id ?? preventionData.sessionId,
         userAgent: preventionData.user_agent ?? preventionData.userAgent,
+        pendingTicket: {
+          eventId: this.resolvedEventId!,
+          ticketTypeId: this.resolvedTicketTypeId!,
+          ownerName,
+          ownerEmail: email,
+        },
       })
       .subscribe({
         next: (res) => this.handlePaymentResponse(res),
