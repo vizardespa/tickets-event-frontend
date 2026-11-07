@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -17,5 +17,5 @@ import { Event } from '../../../shared/models/event.model';
   templateUrl: './event-card.component.html',
 })
 export class EventCardComponent {
-  @Input({ required: true }) event!: Event;
+  readonly event = input.required<Event>();
 }

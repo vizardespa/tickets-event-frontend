@@ -1,11 +1,10 @@
 import {
   Component,
-  EventEmitter,
-  Input,
-  OnChanges,
+  computed,
+  input,
   OnDestroy,
   OnInit,
-  Output,
+  output,
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -39,15 +38,22 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     `,
   ],
 })
-export class Clip3dsOverlayComponent implements OnInit, OnChanges, OnDestroy {
-  @Input({ required: true }) url!: string;
-  @Output() paymentIdReceived = new EventEmitter<string>();
+export class Clip3dsOverlayComponent implements OnInit, OnDestroy {
+  readonly url = input.required<string>();
+  readonly paymentIdReceived = output<string>();
 
-  safeUrl!: SafeResourceUrl;
+  readonly safeUrl = computed<SafeResourceUrl>(() =>
+    this.sanitizer.bypassSecurityTrustResourceUrl(this.url())
+  );
 
-  private urlOrigin: string | null = null;
+  private readonly urlOrigin = computed<string | null>(() => {
+    const url = this.url();
+    return url ? new URL(url).origin : null;
+  });
+
   private readonly onMessage = (event: MessageEvent) => {
-    if (!this.urlOrigin || event.origin !== this.urlOrigin) {
+    const origin = this.urlOrigin();
+    if (!origin || event.origin !== origin) {
       return;
     }
     const paymentId = event.data?.paymentId;
@@ -60,11 +66,6 @@ export class Clip3dsOverlayComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     window.addEventListener('message', this.onMessage);
-  }
-
-  ngOnChanges(): void {
-    this.urlOrigin = this.url ? new URL(this.url).origin : null;
-    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
   }
 
   ngOnDestroy(): void {

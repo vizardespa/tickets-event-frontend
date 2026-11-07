@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { AfterViewInit, Component, Input, OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, input, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,8 +35,11 @@ const CLIP_3DS_STATUS_CODE = 'PE-3DS01';
 })
 export class Checkout implements OnInit, AfterViewInit {
   /** Can be set directly by a host component, otherwise read from the `/checkout` route's query params. */
-  @Input() eventId?: string;
-  @Input() ticketTypeId?: string;
+  readonly eventId = input<string>();
+  readonly ticketTypeId = input<string>();
+
+  private resolvedEventId?: string;
+  private resolvedTicketTypeId?: string;
 
   private clipInstance: any;
   private card: any;
@@ -69,14 +72,14 @@ export class Checkout implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     const params = this.route.snapshot.queryParamMap;
-    this.eventId = this.eventId ?? params.get('eventId') ?? undefined;
-    this.ticketTypeId = this.ticketTypeId ?? params.get('ticketTypeId') ?? undefined;
+    this.resolvedEventId = this.eventId() ?? params.get('eventId') ?? undefined;
+    this.resolvedTicketTypeId = this.ticketTypeId() ?? params.get('ticketTypeId') ?? undefined;
 
-    if (!this.eventId || !this.ticketTypeId) {
+    if (!this.resolvedEventId || !this.resolvedTicketTypeId) {
       this.contextError.set('No event/ticket type selected. Go back and pick a ticket to buy.');
       return;
     }
-    this.loadContext(this.eventId, this.ticketTypeId);
+    this.loadContext(this.resolvedEventId, this.resolvedTicketTypeId);
   }
 
   private loadContext(eventId: string, ticketTypeId: string): void {
@@ -236,8 +239,8 @@ export class Checkout implements OnInit, AfterViewInit {
 
     this.ticketService
       .purchase({
-        eventId: this.eventId!,
-        ticketTypeId: this.ticketTypeId!,
+        eventId: this.resolvedEventId!,
+        ticketTypeId: this.resolvedTicketTypeId!,
         ownerName,
         ownerEmail: email,
         clipPaymentId,
