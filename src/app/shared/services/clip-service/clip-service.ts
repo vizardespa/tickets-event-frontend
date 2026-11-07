@@ -8,7 +8,7 @@ import { ClipPaymentRequest, ClipPaymentResponse } from '../../models/clip-payme
   providedIn: 'root',
 })
 export class ClipService {
-  private scriptUrl = 'https://payclip.com'; // URL provista por Clip
+  private scriptUrl = 'https://sdk.clip.mx/js/clip-sdk.js';
   private readonly baseUrl = `${environment.apiBaseUrl}/api/payments`;
 
   constructor(private http: HttpClient) {}

@@ -18,6 +18,19 @@ import { TicketService } from '../../shared/services/ticket.service';
 
 /** Status detail code CLIP returns when a payment requires 3DS authentication. */
 const CLIP_3DS_STATUS_CODE = 'PE-3DS01';
+const CLIP_3DS_FAILED_CODE = 'RE-3DS01';
+const CLIP_STATUS_APPROVED = 'approved';
+
+const CLIP_REJECTION_MESSAGES: Record<string, string> = {
+  'RE-3DS01': 'La autenticación 3DS falló. Intenta de nuevo.',
+  'RE-ISS01': 'Fondos insuficientes.',
+  'RE-ISS02': 'El banco rechazó la transacción.',
+  'RE-ISS03': 'Tarjeta restringida.',
+  'RE-ISS05': 'Transacción no permitida para este tarjetahabiente.',
+  'RE-ISS07': 'Tarjeta expirada.',
+  'RE-ISS12': 'Monto inválido.',
+  'RE-ISS16': 'Número de tarjeta inválido.',
+};
 
 @Component({
   selector: 'app-checkout',
@@ -170,17 +183,27 @@ export class Checkout implements OnInit {
           alert('Error: ' + error.message);
           return;
         default:
+          console.error('Error al tokenizar la tarjeta:', error);
+          alert('No se pudo procesar la tarjeta. Intenta de nuevo.');
           return;
       }
     }
 
-    this.sendTokenToBackend(cardToken.id);
+    let preventionData: any = {};
+    try {
+      preventionData = (await this.card.preventionData()) ?? {};
+    } catch (error) {
+      console.warn('No se pudieron obtener los datos de prevención de fraude:', error);
+    }
+
+    this.sendTokenToBackend(cardToken.id, preventionData);
   }
 
   // 4. Comunicación final HTTP con el backend de tu comercio
-  private sendTokenToBackend(token: string): void {
+  private sendTokenToBackend(token: string, preventionData: any): void {
     this.isProcessing = true;
-    const { email, phone } = this.customerForm.getRawValue();
+    const { ownerName, email, phone } = this.customerForm.getRawValue();
+    const [firstName, ...rest] = ownerName.trim().split(/\s+/);
     const ticketType = this.ticketType();
     const event = this.event();
 
@@ -192,12 +215,18 @@ export class Checkout implements OnInit {
         cardToken: token,
         customerEmail: email,
         customerPhone: phone,
+        customerFirstName: firstName,
+        customerLastName: rest.join(' ') || undefined,
+        externalReference: `${this.resolvedEventId}:${this.resolvedTicketTypeId}`,
+        sessionId: preventionData.session_id ?? preventionData.sessionId,
+        userAgent: preventionData.user_agent ?? preventionData.userAgent,
       })
       .subscribe({
         next: (res) => this.handlePaymentResponse(res),
         error: (err) => {
           this.isProcessing = false;
           console.error('Error al procesar el cobro en el backend:', err);
+          this.resetCard();
           alert('El banco o el servidor rechazó la transacción.');
         },
       });
@@ -212,13 +241,28 @@ export class Checkout implements OnInit {
       return;
     }
 
-    if (res.status === 'success' && res.id) {
+    if (res.status === CLIP_STATUS_APPROVED && res.id) {
       this.createTicket(res.id);
       return;
     }
 
     this.isProcessing = false;
-    alert('El banco o el servidor rechazó la transacción.');
+    this.resetCard();
+    if (res.status === 'pending') {
+      alert('Tu pago sigue pendiente de confirmación. Contacta a soporte si no se completa pronto.');
+      return;
+    }
+    const code = res.statusDetail?.code;
+    const reason = (code && CLIP_REJECTION_MESSAGES[code]) || 'El banco o el servidor rechazó la transacción.';
+    alert(code === CLIP_3DS_FAILED_CODE ? reason : `${reason} Vuelve a ingresar tu tarjeta.`);
+  }
+
+  // The Card Token ID is single-use (15 min), so a retry needs a freshly mounted card element.
+  private resetCard(): void {
+    this.card?.unmount?.();
+    if (this.cardContainer() && this.isSdkLoaded()) {
+      this.initializeClipForm();
+    }
   }
 
   // 6. Al recibir el paymentId desde el iframe de 3DS, se consulta el estado final

@@ -9,6 +9,13 @@ export interface ClipPaymentRequest {
   cardToken: string;
   customerEmail: string;
   customerPhone: string;
+  customerFirstName?: string;
+  customerLastName?: string;
+  externalReference?: string;
+  sessionId?: string;
+  userAgent?: string;
+  request3ds?: boolean;
+  installments?: number;
 }
 
 export interface ClipStatusDetail {
