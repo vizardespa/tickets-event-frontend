@@ -1,5 +1,6 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { rxResource, toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -7,6 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { EMPTY, map } from 'rxjs';
 import { Event } from '../../../shared/models/event.model';
 import { isTicketTypePurchasable, TicketType } from '../../../shared/models/ticket-type.model';
 import { EventService } from '../../../shared/services/event.service';
@@ -140,55 +142,36 @@ import { TicketTypeService } from '../../../shared/services/ticket-type.service'
     </section>
   `,
 })
-export class EventDetailComponent implements OnInit {
+export class EventDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly eventService = inject(EventService);
   private readonly ticketTypeService = inject(TicketTypeService);
 
-  readonly event = signal<Event | null>(null);
-  readonly loading = signal(false);
-  readonly error = signal<string | null>(null);
-  readonly ticketTypes = signal<TicketType[]>([]);
-  readonly ticketTypesLoading = signal(false);
+  /** Route id as a signal, so both resources refetch whenever it changes. */
+  private readonly eventId = toSignal(this.route.paramMap.pipe(map((params) => params.get('id'))));
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (!id) {
-      this.error.set('No event id provided.');
-      return;
+  private readonly eventResource = rxResource({
+    params: () => this.eventId(),
+    stream: ({ params: eventId }) => (eventId ? this.eventService.getById(eventId) : EMPTY),
+  });
+
+  private readonly ticketTypesResource = rxResource({
+    params: () => this.eventId(),
+    stream: ({ params: eventId }) =>
+      eventId ? this.ticketTypeService.getAvailableByEvent(eventId) : EMPTY,
+  });
+
+  readonly event = this.eventResource.value;
+  readonly loading = this.eventResource.isLoading;
+  readonly error = computed(() => {
+    if (!this.eventId()) {
+      return 'No event id provided.';
     }
-    this.load(id);
-    this.loadTicketTypes(id);
-  }
-
-  load(id: string): void {
-    this.loading.set(true);
-    this.error.set(null);
-    this.eventService.getById(id).subscribe({
-      next: (event) => {
-        this.event.set(event);
-        this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('Event not found or backend unavailable.');
-        this.loading.set(false);
-      },
-    });
-  }
-
-  loadTicketTypes(eventId: string): void {
-    this.ticketTypesLoading.set(true);
-    this.ticketTypeService.getByEvent(eventId).subscribe({
-      next: (ticketTypes) => {
-        this.ticketTypes.set(ticketTypes);
-        this.ticketTypesLoading.set(false);
-      },
-      error: () => {
-        this.ticketTypesLoading.set(false);
-      },
-    });
-  }
+    return this.eventResource.error() ? 'Event not found or backend unavailable.' : null;
+  });
+  readonly ticketTypes = computed(() => this.ticketTypesResource.value() ?? []);
+  readonly ticketTypesLoading = this.ticketTypesResource.isLoading;
 
   isPurchasable(ticketType: TicketType): boolean {
     return isTicketTypePurchasable(ticketType);

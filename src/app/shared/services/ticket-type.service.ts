@@ -17,6 +17,10 @@ export class TicketTypeService {
     return this.http.get<TicketType[]>(`${this.baseUrl}/events/${eventId}/ticket-types`);
   }
 
+  getAvailableByEvent(eventId: string): Observable<TicketType[]> {
+    return this.http.get<TicketType[]>(`${this.baseUrl}/events/${eventId}/ticket-types/available`);
+  }
+
   getById(id: string): Observable<TicketType> {
     return this.http.get<TicketType>(`${this.baseUrl}/ticket-types/${id}`);
   }
