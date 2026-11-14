@@ -1,1 +1,35 @@
-<app-events-list />
+@let buttonClass = 'text-white hover:text-[#F8DF15] transition-colors duration-300';
+@let dividerClass = 'text-white';
+
+<div #header class="flex justify-between bg-[#171616]">
+  <img src="path/to/logo.png" alt="Logo" />
+  <div #buttonsSection class="flex gap-2">
+    <button
+      matButton
+      class="{{ buttonClass }}"
+      routerLink="/dashboard"
+      routerLinkActive="!text-[#F8DF15]"
+    >
+      INICIO
+    </button>
+    <a class="{{ dividerClass }}">|</a>
+    <button matButton class="{{ buttonClass }}">LINE UP</button>
+    <a class="{{ dividerClass }}">|</a>
+    <button
+      matButton
+      class="{{ buttonClass }}"
+      routerLink="/events"
+      routerLinkActive="!text-[#F8DF15]"
+    >
+      BOLETOS
+    </button>
+    <a class="{{ dividerClass }}">|</a>
+    <button matButton class="{{ buttonClass }}">HISTORIA</button>
+    <a class="{{ dividerClass }}">|</a>
+    <button matButton class="{{ buttonClass }}">MERCH</button>
+    <a class="{{ dividerClass }}">|</a>
+    <button matButton class="{{ buttonClass }}">CONTACTO</button>
+  </div>
+</div>
+
+<div #container></div>
