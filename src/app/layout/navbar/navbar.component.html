@@ -22,36 +22,27 @@
     </a>
   </nav>
 </mat-toolbar> -->
-@let buttonClass = 'text-white hover:text-[#F8DF15] transition-colors duration-300';
-@let dividerClass = 'text-white';
+@let buttonClass =
+  'bg-transparent border-0 cursor-pointer text-white hover:text-[#F8DF15] transition-colors duration-300';
+@let dividerClass = 'text-white font-bold';
 
 <div #header class="flex justify-between bg-[#171616]">
   <img src="path/to/logo.png" alt="Logo" />
   <div #buttonsSection class="flex gap-2">
-    <button
-      matButton
-      class="{{ buttonClass }}"
-      routerLink="/dashboard"
-      routerLinkActive="!text-[#F8DF15]"
-    >
+    <button class="{{ buttonClass }}" routerLink="/dashboard" routerLinkActive="!text-[#F8DF15]">
       INICIO
     </button>
     <a class="{{ dividerClass }}">|</a>
-    <button matButton class="{{ buttonClass }}">LINE UP</button>
+    <button class="{{ buttonClass }}">LINE UP</button>
     <a class="{{ dividerClass }}">|</a>
-    <button
-      matButton
-      class="{{ buttonClass }}"
-      routerLink="/events"
-      routerLinkActive="!text-[#F8DF15]"
-    >
+    <button class="{{ buttonClass }}" routerLink="/events" routerLinkActive="!text-[#F8DF15]">
       BOLETOS
     </button>
     <a class="{{ dividerClass }}">|</a>
-    <button matButton class="{{ buttonClass }}">HISTORIA</button>
+    <button class="{{ buttonClass }}">HISTORIA</button>
     <a class="{{ dividerClass }}">|</a>
-    <button matButton class="{{ buttonClass }}">MERCH</button>
+    <button class="{{ buttonClass }}">MERCH</button>
     <a class="{{ dividerClass }}">|</a>
-    <button matButton class="{{ buttonClass }}">CONTACTO</button>
+    <button class="{{ buttonClass }}">CONTACTO</button>
   </div>
 </div>
