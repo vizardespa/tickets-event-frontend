@@ -23,8 +23,8 @@
   </nav>
 </mat-toolbar> -->
 @let buttonClass =
-  'bg-transparent border-0 cursor-pointer text-white hover:text-[#F8DF15] transition-colors duration-300';
-@let dividerClass = 'text-white font-bold';
+  'bg-transparent border-0 cursor-pointer text-white text-xl hover:text-[#F8DF15] transition-colors duration-300 font-brunson tracking-wide';
+@let dividerClass = 'text-white font-bold text-xl';
 
 <div #header class="flex h-[3em] items-center justify-between bg-[#171616] px-[4rem]">
   <img src="assets/img/tj-rock-logo-transparent.png" alt="Tijuana Rockea! logo" class="h-[2rem]" />
@@ -33,7 +33,9 @@
       INICIO
     </button>
     <span class="{{ dividerClass }}">|</span>
-    <button class="{{ buttonClass }}">LINE UP</button>
+    <button class="{{ buttonClass }}" routerLink="/line-up" routerLinkActive="!text-[#F8DF15]">
+      LINE UP
+    </button>
     <span class="{{ dividerClass }}">|</span>
     <button class="{{ buttonClass }}" routerLink="/events" routerLinkActive="!text-[#F8DF15]">
       BOLETOS
