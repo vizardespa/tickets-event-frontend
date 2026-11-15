@@ -1,10 +1,12 @@
+@let titleClass = 'text-3xl font-bold text-[#F9DF15]';
+@let subtitleClass = 'text-lg font-medium text-white';
 <div #container class="flex flex-col gap-6">
   <div class="flex justify-between">
     <div class="flex flex-col gap-2">
-      <span class="text-bold text-4xl text-[#F9DF15]">TIJUANA ROCKEA 2027</span>
+      <span [class]="titleClass">TIJUANA ROCKEA 2027</span>
       <div class="flex flex-col">
-        <span class="text-medium text-lg text-white">El Festival de la Frontera</span>
-        <span class="text-medium text-lg text-white">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
+        <span [class]="subtitleClass">El Festival de la Frontera</span>
+        <span [class]="subtitleClass">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
         <span class="text-white">
           +50 BANDAS &#x2022; 2 ESCENARIOS &#x2022; 3 DIAS DE EXPERIENCIA</span
         >
@@ -15,33 +17,35 @@
     </div>
     <img src="assets/img/TJ_SKULL.png" alt="Calavera Rockera" class="h-[18rem]" />
   </div>
-  <div class="flex justify-between">
-    <div class="flex flex-col gap-2">
-      <span class="text-bold text-4xl text-[#F9DF15]">PREVENTA COMUNIDAD</span>
-      <span class="text-medium text-lg text-white">Disponible del 16 al 30 de Noviembre</span>
+  <div class="flex flex-col gap-2">
+    <span [class]="titleClass">PREVENTA COMUNIDAD</span>
+    <span [class]="subtitleClass">Disponible del 16 al 30 de Noviembre</span>
 
-      <div class="flex gap-4">
-        <button>VER LINE UP</button>
-        <button>COMPRAR BOLETOS</button>
-      </div>
+    <div class="flex flex-row justify-center gap-[2rem]">
+      <button class="bg-[#F9DF15] px-4 py-2 font-bold hover:bg-[#e0c800]" routerLink="/line-up">
+        VER LINE UP
+      </button>
+      <button class="bg-[#FF7630] px-4 py-2 font-bold hover:bg-[#e6652b]" routerLink="/tickets">
+        COMPRAR BOLETOS
+      </button>
     </div>
   </div>
   <div class="flex justify-between">
     <div class="flex flex-col gap-2">
-      <span class="text-bold text-4xl text-[#F9DF15]">MUCHO MAS QUE UN FESTIVAL</span>
-      <div class="flex">
+      <span [class]="titleClass">MUCHO MAS QUE UN FESTIVAL</span>
+      <div class="flex gap-[2rem]">
         <div class="flex flex-col">
-          <span>+50</span>
-          <span>Bandas en vivo</span>
+          <span class="mt-[3rem] h-[3rem] text-[5rem] font-bold text-[#FF7630]">+50</span>
+          <span [class]="subtitleClass">Bandas en vivo</span>
         </div>
         <div class="flex flex-col">
-          <span>02</span>
-          <span>Escenarios</span>
+          <span class="mt-[3rem] h-[3rem] text-[5rem] font-bold text-[#FF7630]">02</span>
+          <span [class]="subtitleClass">Escenarios</span>
         </div>
       </div>
       <div class="flex flex-col">
-        <span class="text-medium text-lg text-white">El Festival de la Frontera</span>
-        <span class="text-medium text-lg text-white">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
+        <span [class]="subtitleClass">El Festival de la Frontera</span>
+        <span [class]="subtitleClass">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
         <span class="text-white">
           +50 BANDAS &#x2022; 2 ESCENARIOS &#x2022; 3 DIAS DE EXPERIENCIA</span
         >
