@@ -4,6 +4,7 @@
 // NOTE: Sass requires all `@use` rules to appear before any other rules,
 // so the Material import must come before the Tailwind directives below.
 @use '@angular/material' as mat;
+@use './fonts';
 
 // Tailwind CSS layers (processed by PostCSS after Sass).
 @tailwind base;
