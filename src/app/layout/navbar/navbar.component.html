@@ -23,28 +23,62 @@
   </nav>
 </mat-toolbar> -->
 @let buttonClass =
-  'bg-transparent border-0 cursor-pointer text-white text-xl hover:text-[#F8DF15] transition-colors duration-300 font-brunson tracking-wide';
+  'bg-transparent border-0 cursor-pointer text-white text-xl text-nowrap hover:text-[#F8DF15] transition-colors duration-300 font-brunson tracking-wide';
 @let dividerClass = 'text-white font-bold text-xl';
+<div
+  #header
+  class="relative flex h-[3.5rem] items-center justify-between bg-[#171616] px-4 sm:px-[4rem]"
+>
+  <img
+    #logo
+    src="assets/img/tj-rock-logo-transparent.png"
+    alt="Tijuana Rockea! logo"
+    class="h-[3rem]"
+  />
 
-<div #header class="flex h-[3.5rem] items-center justify-between bg-[#171616] px-[4rem]">
-  <img src="assets/img/tj-rock-logo-transparent.png" alt="Tijuana Rockea! logo" class="h-[3rem]" />
-  <div #buttonsSection class="flex gap-2">
-    <button class="{{ buttonClass }}" routerLink="/dashboard" routerLinkActive="!text-[#F8DF15]">
-      INICIO
-    </button>
-    <span class="{{ dividerClass }}">|</span>
-    <button class="{{ buttonClass }}" routerLink="/line-up" routerLinkActive="!text-[#F8DF15]">
-      LINE UP
-    </button>
-    <span class="{{ dividerClass }}">|</span>
-    <button class="{{ buttonClass }}" routerLink="/events" routerLinkActive="!text-[#F8DF15]">
-      BOLETOS
-    </button>
-    <span class="{{ dividerClass }}">|</span>
-    <button class="{{ buttonClass }}">HISTORIA</button>
-    <span class="{{ dividerClass }}">|</span>
-    <button class="{{ buttonClass }}">MERCH</button>
-    <span class="{{ dividerClass }}">|</span>
-    <button class="{{ buttonClass }}">CONTACTO</button>
+  <div
+    #measurer
+    aria-hidden="true"
+    class="pointer-events-none invisible absolute flex gap-2 whitespace-nowrap"
+  >
+    @for (link of links; track link.label; let last = $last) {
+      <span class="{{ buttonClass }}">{{ link.label }}</span>
+      @if (!last) {
+        <span class="{{ dividerClass }}">|</span>
+      }
+    }
   </div>
+
+  @if (collapsed()) {
+    <button matIconButton class="!text-white" aria-label="Menu" [matMenuTriggerFor]="navMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #navMenu="matMenu">
+      @for (link of links; track link.label) {
+        <button
+          mat-menu-item
+          class="{{ buttonClass }} !min-h-0 !py-2"
+          [routerLink]="link.route"
+          routerLinkActive="!text-[#F8DF15]"
+        >
+          {{ link.label }}
+        </button>
+      }
+    </mat-menu>
+  } @else {
+    <div class="flex gap-2">
+      @for (link of links; track link.label; let last = $last) {
+        <button
+          class="{{ buttonClass }}"
+          [routerLink]="link.route"
+          routerLinkActive="!text-[#F8DF15]"
+        >
+          {{ link.label }}
+        </button>
+        @if (!last) {
+          <span class="{{ dividerClass }}">|</span>
+        }
+      }
+    </div>
+  }
 </div>
