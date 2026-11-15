@@ -1,5 +1,6 @@
-@let titleClass = 'text-3xl font-bold text-[#F9DF15]';
-@let subtitleClass = 'text-lg font-medium text-white';
+@let titleClass = 'text-3xl font-medium text-[#F9DF15] text-[2.4rem] font-brunson tracking-wide';
+@let subtitleClass = 'text-lg font-medium text-white font-coolvetica';
+@let textClass = 'text-white font-coolvetica font-light';
 <div #container class="flex flex-col gap-6">
   <div class="flex justify-between">
     <div class="flex flex-col gap-2">
@@ -7,10 +8,10 @@
       <div class="flex flex-col">
         <span [class]="subtitleClass">El Festival de la Frontera</span>
         <span [class]="subtitleClass">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
-        <span class="text-white">
+        <span [class]="textClass">
           +50 BANDAS &#x2022; 2 ESCENARIOS &#x2022; 3 DIAS DE EXPERIENCIA</span
         >
-        <span class="text-white">
+        <span [class]="textClass">
           La Historia que hizo vibrar a Tijuana en 2011 regresa para una nueva generación</span
         >
       </div>
@@ -22,38 +23,37 @@
     <span [class]="subtitleClass">Disponible del 16 al 30 de Noviembre</span>
 
     <div class="flex flex-row justify-center gap-[2rem]">
-      <button class="bg-[#F9DF15] px-4 py-2 font-bold hover:bg-[#e0c800]" routerLink="/line-up">
-        VER LINE UP
-      </button>
-      <button class="bg-[#FF7630] px-4 py-2 font-bold hover:bg-[#e6652b]" routerLink="/tickets">
-        COMPRAR BOLETOS
-      </button>
+      @let buttonClass =
+        'text-lg font-brunson w-[10rem] bg-[#F9DF15] py-[0.8rem] text-center font-medium tracking-wide hover:bg-[#e0c800]';
+      @let buttonClass2 =
+        'text-lg font-brunson w-[10rem] bg-[#FF7630] py-[0.8rem] text-center font-medium tracking-wide hover:bg-[#e6652b]';
+      <button [class]="buttonClass" routerLink="/line-up">VER LINE UP</button>
+      <button [class]="buttonClass2" routerLink="/tickets">COMPRAR BOLETOS</button>
     </div>
   </div>
   <div class="flex justify-between">
+    @let descriptionClass = 'text-xl font-medium text-white font-coolvetica';
     <div class="flex flex-col gap-2">
       <span [class]="titleClass">MUCHO MAS QUE UN FESTIVAL</span>
       <div class="flex gap-[2rem]">
         <div class="flex flex-col">
           <span class="mt-[3rem] h-[3rem] text-[5rem] font-bold text-[#FF7630]">+50</span>
-          <span [class]="subtitleClass">Bandas en vivo</span>
+          <span [class]="descriptionClass">Bandas en vivo</span>
         </div>
         <div class="flex flex-col">
           <span class="mt-[3rem] h-[3rem] text-[5rem] font-bold text-[#FF7630]">02</span>
-          <span [class]="subtitleClass">Escenarios</span>
+          <span [class]="descriptionClass">Escenarios</span>
         </div>
       </div>
       <div class="flex flex-col">
-        <span [class]="subtitleClass">El Festival de la Frontera</span>
-        <span [class]="subtitleClass">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
-        <span class="text-white">
-          +50 BANDAS &#x2022; 2 ESCENARIOS &#x2022; 3 DIAS DE EXPERIENCIA</span
-        >
-        <span class="text-white">
-          La Historia que hizo vibrar a Tijuana en 2011 regresa para una nueva generación</span
-        >
+        <span [class]="descriptionClass">Zona gastronómica</span>
+        <span [class]="descriptionClass">Arte, tatto y cultura urbana</span>
+        <span [class]="descriptionClass">Activaciones de marcas y experiencias interactivas</span>
+        <span [class]="descriptionClass">Merch oficial del festival</span>
       </div>
     </div>
-    <img src="assets/img/TJ_AMPLI2-MIRRORED.png" alt="Amplificador" class="h-[20rem]" />
+    <div class="pt-[5rem]">
+      <img src="assets/img/TJ_AMPLI2-MIRRORED.png" alt="Amplificador" class="h-[20rem]" />
+    </div>
   </div>
 </div>
