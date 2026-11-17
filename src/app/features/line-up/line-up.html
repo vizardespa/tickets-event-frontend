@@ -1,1 +1,92 @@
-<img src="assets/img/TJ_ROCKEA_SITIO_WEB_LINEUP.png" alt="Amplificador" />
+@let titleClass = 'text-3xl font-medium text-[#F9DF15] text-[2.4rem] font-brunson tracking-wide';
+@let bandSectionClass = 'flex flex-col justify-center text-center gap-2 md:flex-row';
+@let bandClass = 'text-4xl font-medium text-white font-brunson tracking-wide text-nowrap';
+@let dividerClass =
+  'text-4xl font-medium text-white font-brunson tracking-wide text-nowrap hidden md:block';
+
+<div #container class="flex flex-col gap-6">
+  <span [class]="titleClass">El REGRESO DEL FESTIVAL DE LA FRONTERA</span>
+  <div flex class="flex flex-col gap-2">
+    <div [class]="bandSectionClass">
+      <span [class]="bandClass"> ALDO LADO A </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> ANGELINA </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> ANTENA SHOW </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> BATOPILAS </span>
+    </div>
+    <div [class]="bandSectionClass">
+      <span [class]="bandClass"> CICUTA </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> DON </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> EL GRAN SILENCIO </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> FERZY </span>
+    </div>
+    <div [class]="bandSectionClass">
+      <span [class]="bandClass"> GIULIANA </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> JARDIN </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> LEVACANCES </span>
+    </div>
+    <div [class]="bandSectionClass">
+      <span [class]="bandClass"> LOS BLINKERS </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> LOST ACAPULCO </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> MARIACHI AND GUN </span>
+    </div>
+    <div [class]="bandSectionClass">
+      <span [class]="bandClass"> MILLONARIO </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> MUTANT BEANS </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> ORQUESKA </span>
+    </div>
+    <div [class]="bandSectionClass">
+      <span [class]="bandClass"> PAN DE MUERTO </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> REBEL CATS </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> SILENT LUNE </span>
+    </div>
+    <div [class]="bandSectionClass">
+      <span [class]="bandClass"> SULTAN </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> VALLES </span>
+      <span [class]="dividerClass">&#x2022;</span>
+      <span [class]="bandClass"> VICTIMAS DR CEREBRO </span>
+    </div>
+  </div>
+  <div [class]="bandSectionClass + ' items-center'">
+    <span
+      class="font-brunson w-[14rem] bg-[#FF7630] py-[0.5rem] text-center text-2xl tracking-wide"
+    >
+      PROXIMAMENTE MAS BANDAS POR ANUNCIAR
+    </span>
+  </div>
+  <span class="font-coolvetica text-center text-base font-light text-white">
+    +50 bandas en total integraran el cartel de Tijuana Rockea 2027.
+  </span>
+</div>
+
+<div class="flex justify-between">
+  <div class="relative">
+    <!-- Background Image -->
+    <img src="assets/img/TJ_AMPLI2.png" alt="Amplificador Grande" class="h-[15rem]" />
+
+    <!-- Overlapping Image -->
+    <img src="assets/img/TJ_CEBRA.png" alt="Cebra" class="absolute -bottom-[8rem] h-[20rem]" />
+  </div>
+
+  <div class="relative">
+    <!-- Background Image -->
+    <img src="assets/img/TJ_AMPLI.png" alt="Amplificador Pequeño" class="h-[13rem]" />
+
+    <!-- Overlapping Image -->
+    <img src="assets/img/TJ_GHOST.png" alt="Fantasma" class="absolute -bottom-[9rem] h-[15rem]" />
+  </div>
+</div>
