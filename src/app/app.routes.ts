@@ -4,7 +4,7 @@ import { Dashboard } from './features/dashboard/dashboard';
 import { EventDetailComponent } from './features/events/event-detail/event-detail.component';
 import { EventsListComponent } from './features/events/events-list/events-list.component';
 import { LineUp } from './features/line-up/line-up';
-import { TicketsListComponent } from './features/tickets/tickets-list/tickets-list.component';
+import { Tickets } from './features/tickets/tickets';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -13,6 +13,6 @@ export const routes: Routes = [
   { path: 'events', component: EventsListComponent },
   { path: 'events/:id', component: EventDetailComponent },
   { path: 'checkout', component: Checkout },
-  { path: 'tickets', component: TicketsListComponent },
+  { path: 'tickets', component: Tickets },
   { path: '**', redirectTo: 'events' },
 ];

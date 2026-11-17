@@ -44,7 +44,7 @@ export class NavbarComponent implements AfterViewInit {
   readonly links: { label: string; route?: string }[] = [
     { label: 'INICIO', route: '/dashboard' },
     { label: 'LINE UP', route: '/line-up' },
-    { label: 'BOLETOS', route: '/events' },
+    { label: 'BOLETOS', route: '/tickets' },
     { label: 'HISTORIA' },
     { label: 'MERCH' },
     { label: 'CONTACTO' },

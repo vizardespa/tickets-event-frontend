@@ -1,0 +1,22 @@
+@let titleClass = 'text-3xl font-medium text-[#F9DF15] text-[2.4rem] font-brunson tracking-wide';
+@let subtitleClass = 'text-lg font-medium text-white font-coolvetica';
+
+<div class="flex flex-col gap-2">
+  <span [class]="titleClass">BOLETOS</span>
+  <span [class]="subtitleClass">Fases de Venta</span>
+</div>
+
+<div class="flex flex-col gap-[2rem]">
+  <div class="flex justify-center gap-[2rem]">
+    <app-ticket-phase
+      [ticketType]="phase1TicketType()"
+      dateRangeLabel="16 NOVIEMBRE AL 31 DICIEMBRE"
+    />
+    <app-ticket-phase [ticketType]="phase2TicketType()" dateRangeLabel="1 ENERO AL 28 FEBRERO" />
+    <app-ticket-phase [ticketType]="phase3TicketType()" dateRangeLabel="1 MARZO AL 30 ABRIL" />
+  </div>
+  <div class="flex justify-center gap-[2rem]">
+    <app-ticket-phase [ticketType]="phase4TicketType()" dateRangeLabel="1 MAYO AL 30 JUNIO" />
+    <app-ticket-phase [ticketType]="phase5TicketType()" dateRangeLabel="1 AL 16 JULIO" />
+  </div>
+</div>

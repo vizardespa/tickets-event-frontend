@@ -4,7 +4,8 @@
 @let dividerClass =
   'text-4xl font-medium text-white font-brunson tracking-wide text-nowrap hidden md:block';
 
-<div #container class="flex flex-col gap-6">
+<div class="relative">
+<div #container class="relative z-10 flex flex-col gap-6">
   <span [class]="titleClass">El REGRESO DEL FESTIVAL DE LA FRONTERA</span>
   <div flex class="flex flex-col gap-2">
     <div [class]="bandSectionClass">
@@ -73,20 +74,15 @@
   </span>
 </div>
 
-<div class="flex justify-between">
-  <div class="relative">
-    <!-- Background Image -->
-    <img src="assets/img/TJ_AMPLI2.png" alt="Amplificador Grande" class="h-[15rem]" />
+  <div class="pointer-events-none absolute z-0 inset-x-0 bottom-0 hidden items-end justify-between md:flex">
+    <div class="relative h-[23rem]">
+      <img src="assets/img/TJ_AMPLI2.png" alt="Amplificador Grande" class="absolute top-0 h-[15rem] max-w-none" />
+      <img src="assets/img/TJ_CEBRA.png" alt="Cebra" class="absolute bottom-0 h-[20rem] max-w-none" />
+    </div>
 
-    <!-- Overlapping Image -->
-    <img src="assets/img/TJ_CEBRA.png" alt="Cebra" class="absolute -bottom-[8rem] h-[20rem]" />
-  </div>
-
-  <div class="relative">
-    <!-- Background Image -->
-    <img src="assets/img/TJ_AMPLI.png" alt="Amplificador Pequeño" class="h-[13rem]" />
-
-    <!-- Overlapping Image -->
-    <img src="assets/img/TJ_GHOST.png" alt="Fantasma" class="absolute -bottom-[9rem] h-[15rem]" />
+    <div class="relative h-[22rem]">
+      <img src="assets/img/TJ_AMPLI.png" alt="Amplificador Pequeño" class="absolute top-0 right-0 h-[13rem] max-w-none" />
+      <img src="assets/img/TJ_GHOST.png" alt="Fantasma" class="absolute right-0 bottom-0 h-[15rem] max-w-none" />
+    </div>
   </div>
 </div>

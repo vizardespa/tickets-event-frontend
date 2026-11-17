@@ -1,0 +1,18 @@
+<div class="relative">
+  <div class="flex h-[15rem] w-[10rem] flex-col items-center justify-center bg-[#171616]">
+    @if (ticketType() && !isFuturePhase()) {
+      <span>{{ ticketType()?.name }}</span>
+      <span>{{ dateRangeLabel() }}</span>
+      <span>GENERAL: {{ ticketType()?.price }}</span>
+    } @else {
+      <span class="font-brunson text-[7rem] text-white">???</span>
+    }
+  </div>
+  @if (ticketType() && isPastPhase()) {
+    <span
+      class="font-brunson absolute w-[14rem] bg-[#FF7630] py-[0.5rem] text-center text-2xl tracking-wide"
+    >
+      AGOTADO
+    </span>
+  }
+</div>

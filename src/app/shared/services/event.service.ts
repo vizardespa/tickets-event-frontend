@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { mergeMap, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Event, EventRequest } from '../models/event.model';
 
@@ -30,5 +30,11 @@ export class EventService {
 
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  getTJREvent(): Observable<Event> {
+    return this.getAll().pipe(
+      mergeMap((events) => events.filter((event) => event.name === 'Tijuana Rockea'))
+    );
   }
 }
