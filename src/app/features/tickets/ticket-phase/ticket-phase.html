@@ -1,9 +1,14 @@
 <div class="relative">
-  <div class="flex h-[15rem] w-[10rem] flex-col items-center justify-center bg-[#171616]">
-    @if (ticketType() && !isFuturePhase()) {
-      <span>{{ ticketType()?.name }}</span>
-      <span>{{ dateRangeLabel() }}</span>
-      <span>GENERAL: {{ ticketType()?.price }}</span>
+  <div class="flex h-[16rem] w-[14rem] flex-col items-center justify-center gap-4 bg-[#171616]">
+    @if (ticketType() && (!isFuturePhase() || forceDisplay())) {
+      <span class="font-coolvetica text-xl text-white">{{ name() }}</span>
+      <div class="flex flex-col items-center justify-center">
+        <span class="font-coolvetica text-white">{{ dateRangeLabel() }}</span>
+        <span class="font-coolvetica text-white">
+          GENERAL: ${{ ticketType()?.price | number: '1.0-0' }}
+        </span>
+      </div>
+      <img src="{{ imagePath() }}" alt="Mano" class="h-[8rem]" />
     } @else {
       <span class="font-brunson text-[7rem] text-white">???</span>
     }

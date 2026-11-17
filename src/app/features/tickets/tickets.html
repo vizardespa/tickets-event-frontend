@@ -12,8 +12,16 @@
       [ticketType]="phase1TicketType()"
       dateRangeLabel="16 NOVIEMBRE AL 31 DICIEMBRE"
     />
-    <app-ticket-phase [ticketType]="phase2TicketType()" dateRangeLabel="1 ENERO AL 28 FEBRERO" />
-    <app-ticket-phase [ticketType]="phase3TicketType()" dateRangeLabel="1 MARZO AL 30 ABRIL" />
+    <app-ticket-phase
+      [ticketType]="phase2TicketType()"
+      dateRangeLabel="1 ENERO AL 28 FEBRERO"
+      [forceDisplay]="true"
+    />
+    <app-ticket-phase
+      [ticketType]="phase3TicketType()"
+      dateRangeLabel="1 MARZO AL 30 ABRIL"
+      imagePath="assets/img/TJ_GHOST.png"
+    />
   </div>
   <div class="flex justify-center gap-[2rem]">
     <app-ticket-phase [ticketType]="phase4TicketType()" dateRangeLabel="1 MAYO AL 30 JUNIO" />
