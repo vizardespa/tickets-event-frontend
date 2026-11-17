@@ -1,5 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { TicketType } from '../../../shared/models/ticket-type.model';
 
 @Component({
@@ -16,6 +16,8 @@ export class TicketPhase {
   forceDisplay = input<boolean>(false);
 
   imagePath = input<string>('assets/img/TJ_MANO.png');
+
+  onClick = output<TicketType | undefined>();
 
   name = computed(() => {
     const ticketType = this.ticketType();
@@ -44,5 +46,9 @@ export class TicketPhase {
       ? new Date(this.ticketType()?.purchaseStartAt || '')
       : null;
     return purchaseStartAt ? now < purchaseStartAt : false;
+  });
+
+  isCurrentPhase = computed(() => {
+    return !this.isPastPhase() && !this.isFuturePhase();
   });
 }

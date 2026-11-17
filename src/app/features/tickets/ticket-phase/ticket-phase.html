@@ -1,6 +1,11 @@
 <div class="relative">
-  <div class="flex h-[16rem] w-[14rem] flex-col items-center justify-center gap-4 bg-[#171616]">
-    @if (ticketType() && (!isFuturePhase() || forceDisplay())) {
+  <div
+    class="flex h-[16rem] w-[14rem] flex-col items-center justify-center gap-4 bg-[#171616]"
+    [class.cursor-pointer]="isCurrentPhase()"
+    [class.hover:bg-[#FF7630]]="isCurrentPhase()"
+    (click)="isCurrentPhase() && onClick.emit(ticketType())"
+  >
+    @if (ticketType() && (isCurrentPhase() || forceDisplay())) {
       <span class="font-coolvetica text-xl text-white">{{ name() }}</span>
       <div class="flex flex-col items-center justify-center">
         <span class="font-coolvetica text-white">{{ dateRangeLabel() }}</span>
@@ -15,7 +20,7 @@
   </div>
   @if (ticketType() && isPastPhase()) {
     <span
-      class="font-brunson absolute w-[14rem] bg-[#FF7630] py-[0.5rem] text-center text-2xl tracking-wide"
+      class="font-brunson absolute bottom-[6.5rem] left-[-0.5rem] w-[15rem] bg-[#FF4400] py-[0.5rem] text-center text-4xl tracking-wide"
     >
       AGOTADO
     </span>
