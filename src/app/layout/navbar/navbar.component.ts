@@ -45,9 +45,9 @@ export class NavbarComponent implements AfterViewInit {
     { label: 'INICIO', route: '/dashboard' },
     { label: 'LINE UP', route: '/line-up' },
     { label: 'BOLETOS', route: '/tickets' },
-    { label: 'HISTORIA' },
-    { label: 'MERCH' },
-    { label: 'CONTACTO' },
+    { label: 'HISTORIA', route: '/historia' },
+    { label: 'MERCH', route: '/merch' },
+    { label: 'CONTACTO', route: '/contacto' },
   ];
 
   ngAfterViewInit(): void {
