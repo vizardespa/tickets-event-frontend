@@ -1,4 +1,4 @@
-@let merchClass = 'text-xl font-medium text-[#F9DF15] text-[2.4rem] font-brunson tracking-wide';
+@let merchClass = 'text-2xl font-medium text-[#F9DF15] font-brunson tracking-wide';
 
 <div #container class="flex flex-col gap-[2rem]">
   <div class="flex flex-col gap-4">
@@ -7,15 +7,17 @@
       Proximamente estara disponible la colección oficial de Tijuana Rockea 2027.
     </span>
   </div>
-  <div class="flex justify-between">
+  <div class="flex flex-col sm:flex-row sm:justify-between">
     <div class="flex flex-col">
-      <span [class]="merchClass"> PLAYERAS OFICIALES </span>
-      <span [class]="merchClass"> HOODIES EDICION ESPECIAL </span>
-      <span [class]="merchClass"> TOTE BAGS </span>
+      <span [class]="merchClass">PLAYERAS OFICIALES</span>
+      <span [class]="merchClass">HOODIES EDICION ESPECIAL</span>
+      <span [class]="merchClass">TOTE BAGS</span>
       <span [class]="merchClass">POSTERS COLECCIONABLES</span>
       <span [class]="merchClass">ACCESORIOS EXCLUSIVOS</span>
       <span [class]="merchClass">EDICIONES LIMITADAS</span>
     </div>
-    <img src="assets/img/TJ_GUITARRA.png" alt="Amplificador" class="h-[20rem]" />
+    <div class="flex justify-end pt-[2rem]">
+      <img src="assets/img/TJ_GUITARRA.png" alt="Amplificador" class="h-[20rem]" />
+    </div>
   </div>
 </div>

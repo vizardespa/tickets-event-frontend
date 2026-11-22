@@ -1,6 +1,6 @@
 @let sectionClass = 'text-[1.4rem] font-medium text-[#F7DE16] font-coolvetica';
 
-<div #container class="flex max-w-[42rem] flex-col gap-[2rem]">
+<div #container class="flex flex-col gap-[2rem]">
   <div class="flex flex-col gap-4">
     <span class="type-title">¿TIENES DUDAS O QUIERES PARTICIPAR?</span>
     <span class="type-body">
@@ -8,19 +8,28 @@
       colaboraciones
     </span>
   </div>
-  <div class="flex gap-[4rem]">
-    <div class="flex flex-col gap-2">
-      <span [class]="sectionClass">Patrocionios</span>
-      <span class="type-body">
-        Conecta tu marca con miles de asistentes y forma parte del regreso del Festival de la
-        Frontera.
-      </span>
-      <span class="type-body"> mkt@tijuanarockea.com.mx </span>
+  <div class="flex flex-col justify-between md:flex-row">
+    <div class="flex flex-col gap-[4rem] md:flex-row">
+      <div class="flex flex-col gap-2">
+        <span [class]="sectionClass">Patrocionios</span>
+        <span class="type-body">
+          Conecta tu marca con miles de asistentes y forma parte del regreso del Festival de la
+          Frontera.
+        </span>
+        <span class="type-body"> mkt@tijuanarockea.com.mx </span>
+      </div>
+      <div class="flex flex-col gap-2">
+        <span [class]="sectionClass">Prensa y Medios</span>
+        <span class="type-body"> Solicita acreditaciones, entrevistas y material oficial. </span>
+        <span class="type-body"> contacto@tijuanarockea.com.mx </span>
+      </div>
     </div>
-    <div class="flex flex-col gap-2">
-      <span [class]="sectionClass">Prensa y Medios</span>
-      <span class="type-body"> Solicita acreditaciones, entrevistas y material oficial. </span>
-      <span class="type-body"> contacto@tijuanarockea.com.mx </span>
+    <div class="pt-[4rem]">
+      <img
+        src="assets/img/TJ_ROCKER_ROBOT.png"
+        alt="Amplificador"
+        class="h-[15rem] min-w-[14rem]"
+      />
     </div>
   </div>
 </div>

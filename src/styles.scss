@@ -20,15 +20,15 @@
   }
 
   .type-subtitle {
-    @apply font-coolvetica text-lg font-medium text-white;
-  }
-
-  .type-lead {
     @apply font-coolvetica text-xl font-medium text-white;
   }
 
+  .type-lead {
+    @apply font-coolvetica text-2xl font-medium text-white;
+  }
+
   .type-body {
-    @apply font-coolvetica font-light text-white;
+    @apply font-coolvetica text-lg font-light text-white;
   }
 }
 
