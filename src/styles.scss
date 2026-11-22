@@ -11,6 +11,27 @@
 @tailwind components;
 @tailwind utilities;
 
+// Shared typography. Use these classes instead of repeating font, size and
+// colour utilities in every feature template. Utilities still win over them,
+// so a template can override a single property (e.g. `class="type-title text-5xl"`).
+@layer components {
+  .type-title {
+    @apply font-brunson text-4xl font-medium tracking-wide text-[#F9DF15];
+  }
+
+  .type-subtitle {
+    @apply font-coolvetica text-lg font-medium text-white;
+  }
+
+  .type-lead {
+    @apply font-coolvetica text-xl font-medium text-white;
+  }
+
+  .type-body {
+    @apply font-coolvetica font-light text-white;
+  }
+}
+
 html {
   height: 100%;
   @include mat.theme(

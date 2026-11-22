@@ -1,17 +1,14 @@
-@let titleClass = 'font-medium text-[#F9DF15] text-[2.4rem] font-brunson tracking-wide';
-@let subtitleClass = 'text-lg font-medium text-white font-coolvetica';
-@let textClass = 'text-white font-coolvetica font-light';
 <div #container class="flex flex-col gap-[4rem]">
   <div class="flex justify-between">
-    <div class="flex flex-col gap-2">
-      <span [class]="titleClass">TIJUANA ROCKEA 2027</span>
+    <div class="flex flex-col gap-4">
+      <span class="type-title">TIJUANA ROCKEA 2027</span>
       <div class="flex flex-col">
-        <span [class]="subtitleClass">El Festival de la Frontera</span>
-        <span [class]="subtitleClass">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
-        <span [class]="textClass">
+        <span class="type-subtitle">El Festival de la Frontera</span>
+        <span class="type-subtitle">16 &#x2022; 17 &#x2022; 18 JULIO 2027</span>
+        <span class="type-body">
           +50 BANDAS &#x2022; 2 ESCENARIOS &#x2022; 3 DIAS DE EXPERIENCIA</span
         >
-        <span [class]="textClass">
+        <span class="type-body">
           La Historia que hizo vibrar a Tijuana en 2011 regresa para una nueva generación</span
         >
       </div>
@@ -19,8 +16,8 @@
     <img src="assets/img/TJ_SKULL.png" alt="Calavera Rockera" class="h-[18rem]" />
   </div>
   <div class="flex flex-col gap-2">
-    <span [class]="titleClass">PREVENTA COMUNIDAD</span>
-    <span [class]="subtitleClass">Disponible del 16 al 30 de Noviembre</span>
+    <span class="type-title">PREVENTA COMUNIDAD</span>
+    <span class="type-subtitle">Disponible del 16 al 30 de Noviembre</span>
 
     <div class="flex flex-row justify-center gap-[2.8rem]">
       @let buttonClass =
@@ -32,24 +29,23 @@
     </div>
   </div>
   <div class="flex justify-between">
-    @let descriptionClass = 'text-xl font-medium text-white font-coolvetica';
     <div class="flex flex-col gap-2">
-      <span [class]="titleClass">MUCHO MAS QUE UN FESTIVAL</span>
+      <span class="type-title">MUCHO MAS QUE UN FESTIVAL</span>
       <div class="flex gap-[2rem]">
         <div class="flex flex-col">
           <span class="mt-[3rem] h-[3rem] text-[5rem] font-bold text-[#FF7630]">+50</span>
-          <span [class]="descriptionClass">Bandas en vivo</span>
+          <span class="type-lead">Bandas en vivo</span>
         </div>
         <div class="flex flex-col">
           <span class="mt-[3rem] h-[3rem] text-[5rem] font-bold text-[#FF7630]">02</span>
-          <span [class]="descriptionClass">Escenarios</span>
+          <span class="type-lead">Escenarios</span>
         </div>
       </div>
       <div class="flex flex-col">
-        <span [class]="descriptionClass">Zona gastronómica</span>
-        <span [class]="descriptionClass">Arte, tatto y cultura urbana</span>
-        <span [class]="descriptionClass">Activaciones de marcas y experiencias interactivas</span>
-        <span [class]="descriptionClass">Merch oficial del festival</span>
+        <span class="type-lead">Zona gastronómica</span>
+        <span class="type-lead">Arte, tatto y cultura urbana</span>
+        <span class="type-lead">Activaciones de marcas y experiencias interactivas</span>
+        <span class="type-lead">Merch oficial del festival</span>
       </div>
     </div>
     <div class="pt-[5rem]">

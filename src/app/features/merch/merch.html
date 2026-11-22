@@ -1,20 +1,21 @@
-@let titleClass = 'font-medium text-[#F9DF15] text-[2.4rem] font-brunson tracking-wide';
-@let textClass = 'text-white font-coolvetica font-light';
 @let merchClass = 'text-xl font-medium text-[#F9DF15] text-[2.4rem] font-brunson tracking-wide';
 
-<div #container class="flex max-w-[42rem] flex-col gap-[2rem]">
-  <div class="flex flex-col gap-2">
-    <span [class]="titleClass">LLEVA El FESTIVAL CONTIGO</span>
-    <span [class]="textClass">
+<div #container class="flex flex-col gap-[2rem]">
+  <div class="flex flex-col gap-4">
+    <span class="type-title">LLEVA El FESTIVAL CONTIGO</span>
+    <span class="type-body">
       Proximamente estara disponible la colección oficial de Tijuana Rockea 2027.
     </span>
   </div>
-  <div class="flex flex-col">
-    <span [class]="merchClass"> PLAYERAS OFICIALES </span>
-    <span [class]="merchClass"> HOODIES EDICION ESPECIAL </span>
-    <span [class]="merchClass"> TOTE BAGS </span>
-    <span [class]="merchClass">POSTERS COLECCIONABLES</span>
-    <span [class]="merchClass">ACCESORIOS EXCLUSIVOS</span>
-    <span [class]="merchClass">EDICIONES LIMITADAS</span>
+  <div class="flex justify-between">
+    <div class="flex flex-col">
+      <span [class]="merchClass"> PLAYERAS OFICIALES </span>
+      <span [class]="merchClass"> HOODIES EDICION ESPECIAL </span>
+      <span [class]="merchClass"> TOTE BAGS </span>
+      <span [class]="merchClass">POSTERS COLECCIONABLES</span>
+      <span [class]="merchClass">ACCESORIOS EXCLUSIVOS</span>
+      <span [class]="merchClass">EDICIONES LIMITADAS</span>
+    </div>
+    <img src="assets/img/TJ_GUITARRA.png" alt="Amplificador" class="h-[20rem]" />
   </div>
 </div>
