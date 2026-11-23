@@ -10,4 +10,5 @@ import { MotionMode } from '../../shared/models/motion-mode.model';
 })
 export class Dashboard {
   readonly skullMotion = input<MotionMode>('loop');
+  readonly ampMotion = input<MotionMode>('loop');
 }

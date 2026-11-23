@@ -58,11 +58,20 @@
         </div>
       </div>
       <div class="pt-[2rem] md:pt-[5rem]">
-        <img
-          src="assets/img/TJ_AMPLI2-MIRRORED.png"
-          alt="Amplificador"
-          class="h-[20rem] min-w-[16rem]"
-        />
+        <div
+          class="amp"
+          [class.amp--loop]="ampMotion() === 'loop'"
+          [class.amp--once]="ampMotion() === 'once'"
+        >
+          <span class="amp__wave" aria-hidden="true"></span>
+          <span class="amp__wave" aria-hidden="true"></span>
+          <span class="amp__wave" aria-hidden="true"></span>
+          <img
+            src="assets/img/TJ_AMPLI2-MIRRORED.png"
+            alt="Amplificador"
+            class="amp__img h-[20rem] min-w-[16rem]"
+          />
+        </div>
       </div>
     </div>
   </div>
