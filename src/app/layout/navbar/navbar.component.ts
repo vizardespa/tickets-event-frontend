@@ -42,12 +42,12 @@ export class NavbarComponent implements AfterViewInit {
   readonly collapsed = signal(false);
 
   readonly links: { label: string; route?: string }[] = [
-    { label: $localize`INICIO`, route: '/dashboard' },
+    { label: $localize`INICIO`, route: '/home' },
     { label: $localize`LINE UP`, route: '/line-up' },
     { label: $localize`BOLETOS`, route: '/tickets' },
-    { label: $localize`HISTORIA`, route: '/historia' },
+    { label: $localize`HISTORIA`, route: '/history' },
     { label: $localize`MERCH`, route: '/merch' },
-    { label: $localize`CONTACTO`, route: '/contacto' },
+    { label: $localize`CONTACTO`, route: '/contact' },
   ];
 
   ngAfterViewInit(): void {

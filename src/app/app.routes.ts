@@ -10,15 +10,15 @@ import { Merch } from './features/merch/merch';
 import { Tickets } from './features/tickets/tickets';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: Dashboard },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: Dashboard },
   { path: 'line-up', component: LineUp },
   { path: 'events', component: EventsListComponent },
   { path: 'events/:id', component: EventDetailComponent },
   { path: 'checkout', component: Checkout },
   { path: 'tickets', component: Tickets },
   { path: 'merch', component: Merch },
-  { path: 'contacto', component: Contact },
-  { path: 'historia', component: History },
+  { path: 'contact', component: Contact },
+  { path: 'history', component: History },
   { path: '**', redirectTo: 'events' },
 ];
