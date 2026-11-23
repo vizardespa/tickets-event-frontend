@@ -1,105 +1,68 @@
 @let bandSectionClass = 'flex flex-col justify-center text-center gap-2 md:flex-row';
-@let bandClass = 'text-4xl font-medium text-white font-brunson tracking-wide text-nowrap';
+@let bandClassWhite = 'text-4xl font-medium text-white font-brunson tracking-wide text-nowrap';
+@let bandClassYellow = 'text-4xl font-medium text-[#F9DF15] font-brunson tracking-wide text-nowrap';
+
 @let dividerClass =
   'text-4xl font-medium text-white font-brunson tracking-wide text-nowrap hidden md:block';
 
-<div class="relative">
-  <div #container class="relative z-10 flex flex-col gap-6">
-    <span class="type-title">El REGRESO DEL FESTIVAL DE LA FRONTERA</span>
-    <div flex class="flex flex-col gap-2">
-      <div [class]="bandSectionClass">
-        <span [class]="bandClass"> ALDO LADO A </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> ANGELINA </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> ANTENA SHOW </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> BATOPILAS </span>
+<div class="flex justify-center">
+  <div class="relative w-full max-w-[72rem]">
+    <div #container class="relative z-10 flex flex-col gap-6">
+      <span class="type-title">El REGRESO DEL FESTIVAL DE LA FRONTERA</span>
+      <div flex class="flex flex-col gap-2">
+        @for (line of visibleLines(); track $index) {
+          <div [class]="bandSectionClass">
+            @for (band of line; track band.name; let last = $last) {
+              <span [class]="band.color === 'yellow' ? bandClassYellow : bandClassWhite">
+                {{ band.name }}
+              </span>
+              @if (!last) {
+                <span [class]="dividerClass">&#x2022;</span>
+              }
+            }
+          </div>
+        }
       </div>
-      <div [class]="bandSectionClass">
-        <span [class]="bandClass"> CICUTA </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> DON </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> EL GRAN SILENCIO </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> FERZY </span>
+      <div [class]="bandSectionClass + ' items-center'">
+        <span
+          class="font-brunson w-[14rem] bg-[#FF7630] py-[0.5rem] text-center text-2xl tracking-wide"
+        >
+          PROXIMAMENTE MAS BANDAS POR ANUNCIAR
+        </span>
       </div>
-      <div [class]="bandSectionClass">
-        <span [class]="bandClass"> GIULIANA </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> JARDIN </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> LEVACANCES </span>
-      </div>
-      <div [class]="bandSectionClass">
-        <span [class]="bandClass"> LOS BLINKERS </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> LOST ACAPULCO </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> MARIACHI AND GUN </span>
-      </div>
-      <div [class]="bandSectionClass">
-        <span [class]="bandClass"> MILLONARIO </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> MUTANT BEANS </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> ORQUESKA </span>
-      </div>
-      <div [class]="bandSectionClass">
-        <span [class]="bandClass"> PAN DE MUERTO </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> REBEL CATS </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> SILENT LUNE </span>
-      </div>
-      <div [class]="bandSectionClass">
-        <span [class]="bandClass"> SULTAN </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> VALLES </span>
-        <span [class]="dividerClass">&#x2022;</span>
-        <span [class]="bandClass"> VICTIMAS DR CEREBRO </span>
-      </div>
-    </div>
-    <div [class]="bandSectionClass + ' items-center'">
-      <span
-        class="font-brunson w-[14rem] bg-[#FF7630] py-[0.5rem] text-center text-2xl tracking-wide"
-      >
-        PROXIMAMENTE MAS BANDAS POR ANUNCIAR
+      <span class="font-coolvetica text-center text-base font-light text-white">
+        +50 bandas en total integraran el cartel de Tijuana Rockea 2027.
       </span>
     </div>
-    <span class="font-coolvetica text-center text-base font-light text-white">
-      +50 bandas en total integraran el cartel de Tijuana Rockea 2027.
-    </span>
-  </div>
 
-  <div
-    class="pointer-events-none absolute inset-x-0 bottom-0 z-0 hidden items-end justify-between md:flex"
-  >
-    <div class="relative h-[23rem]">
-      <img
-        src="assets/img/TJ_AMPLI2.png"
-        alt="Amplificador Grande"
-        class="absolute top-0 h-[15rem] max-w-none"
-      />
-      <img
-        src="assets/img/TJ_CEBRA.png"
-        alt="Cebra"
-        class="absolute bottom-0 h-[20rem] max-w-none"
-      />
-    </div>
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 z-0 hidden items-end justify-between md:flex"
+    >
+      <div class="relative h-[23rem]">
+        <img
+          src="assets/img/TJ_AMPLI2.png"
+          alt="Amplificador Grande"
+          class="absolute top-0 h-[15rem] max-w-none"
+        />
+        <img
+          src="assets/img/TJ_CEBRA.png"
+          alt="Cebra"
+          class="absolute bottom-0 h-[20rem] max-w-none"
+        />
+      </div>
 
-    <div class="relative h-[22rem]">
-      <img
-        src="assets/img/TJ_AMPLI.png"
-        alt="Amplificador Pequeño"
-        class="absolute right-0 top-0 h-[13rem] max-w-none"
-      />
-      <img
-        src="assets/img/TJ_GHOST.png"
-        alt="Fantasma"
-        class="absolute bottom-0 right-0 h-[15rem] max-w-none"
-      />
+      <div class="relative h-[22rem]">
+        <img
+          src="assets/img/TJ_AMPLI.png"
+          alt="Amplificador Pequeño"
+          class="absolute right-0 top-0 h-[13rem] max-w-none"
+        />
+        <img
+          src="assets/img/TJ_GHOST.png"
+          alt="Fantasma"
+          class="absolute bottom-0 right-0 h-[15rem] max-w-none"
+        />
+      </div>
     </div>
   </div>
 </div>
