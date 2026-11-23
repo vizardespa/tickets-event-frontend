@@ -2,11 +2,64 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="es" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="1057769920467566022" datatype="html">
+        <source> Proximamente estara disponible la colección oficial de Tijuana Rockea 2027. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/merch/merch.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1176547693642779701" datatype="html">
+        <source> Quince años después, el festival regresa para reunir a quienes vivieron aquella experiencia y a una nueva generación lista para formar parte de la historia. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/history/history.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1195664075569102827" datatype="html">
+        <source>POSTERS COLECCIONABLES</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/merch/merch.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1222355282777144714" datatype="html">
+        <source> Para informacion sobre patrocinios, medios de comunicacion, proveedores, artistas y colaboraciones </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/contact.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1313859992153521832" datatype="html">
+        <source>1 MAYO AL 30 JUNIO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tickets/tickets.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="135168166848172258" datatype="html">
         <source>BOLETOS</source>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tickets/tickets.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/navbar/navbar.component.ts</context>
           <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1413968319827480629" datatype="html">
+        <source>HOODIES EDICION ESPECIAL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/merch/merch.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1573108526165360616" datatype="html">
+        <source>PREVENTA COMUNIDAD</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1602760536921241420" datatype="html">
@@ -14,6 +67,62 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/navbar/navbar.component.ts</context>
           <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1799664839494741791" datatype="html">
+        <source>LLEVA El FESTIVAL CONTIGO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/merch/merch.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1910253113535961633" datatype="html">
+        <source> Conecta tu marca con miles de asistentes y forma parte del regreso del Festival de la Frontera. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/contact.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1922725135388789947" datatype="html">
+        <source>EDICIONES LIMITADAS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/merch/merch.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2082075757946421367" datatype="html">
+        <source>Activaciones de marcas y experiencias interactivas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="214755858705519475" datatype="html">
+        <source>UNA LEYENDA REGRESA</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/history/history.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2277292517945190584" datatype="html">
+        <source>¿TIENES DUDAS O QUIERES PARTICIPAR?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/contact.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2545317262706331168" datatype="html">
+        <source>Zona gastronómica</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2705219596027417015" datatype="html">
+        <source>Arte, tatto y cultura urbana</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2887712913211123683" datatype="html">
@@ -37,11 +146,200 @@
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="4051636292661978542" datatype="html">
+        <source>PLAYERAS OFICIALES</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/merch/merch.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4229905498179201188" datatype="html">
+        <source>El REGRESO DEL FESTIVAL DE LA FRONTERA</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/line-up/line-up.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4337804636489204433" datatype="html">
+        <source>Patrocionios</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/contact.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="4366978374156635096" datatype="html">
         <source>LINE UP</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/layout/navbar/navbar.component.ts</context>
           <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4380359563428190431" datatype="html">
+        <source>VER LINE UP</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4389579668841320156" datatype="html">
+        <source>16 NOVIEMBRE AL 31 DICIEMBRE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tickets/tickets.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4740373190062893653" datatype="html">
+        <source>Prensa y Medios</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/contact.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4748214621663269753" datatype="html">
+        <source> La música cambió. La ciudad evolucionó. El espíritu sigue intacto. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/history/history.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5044314227577920504" datatype="html">
+        <source>Escenarios</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5083030432066712531" datatype="html">
+        <source> En 2011, Tijuana Rockea reunió a miles de personas en una celebración que dejó huella en la historia musical de la ciudad. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/history/history.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5115354215553755547" datatype="html">
+        <source>Fases de Venta</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tickets/tickets.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5438803524804940968" datatype="html">
+        <source>MUCHO MAS QUE UN FESTIVAL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5614572529270903821" datatype="html">
+        <source> +50 bandas en total integraran el cartel de Tijuana Rockea 2027. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/line-up/line-up.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5634670444820461252" datatype="html">
+        <source>1 ENERO AL 28 FEBRERO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tickets/tickets.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5803684052496174567" datatype="html">
+        <source>Merch oficial del festival</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5962544260349833972" datatype="html">
+        <source>TIJUANA ROCKEA 2027</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5973963095417943413" datatype="html">
+        <source> +50 BANDAS • 2 ESCENARIOS • 3 DIAS DE EXPERIENCIA</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6354436624875900180" datatype="html">
+        <source>COMPRAR BOLETOS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6513657090304125555" datatype="html">
+        <source>1 MARZO AL 30 ABRIL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tickets/tickets.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7073880882580254688" datatype="html">
+        <source>Bandas en vivo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7292224129657418631" datatype="html">
+        <source> PROXIMAMENTE MAS BANDAS POR ANUNCIAR </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/line-up/line-up.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="741839517766633299" datatype="html">
+        <source>Disponible del 16 al 30 de Noviembre</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7462271972376154382" datatype="html">
+        <source>El Festival de la Frontera</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7872863002340461092" datatype="html">
+        <source>ACCESORIOS EXCLUSIVOS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/merch/merch.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="813954482084276282" datatype="html">
+        <source>1 AL 16 JULIO</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/tickets/tickets.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8797035955125018535" datatype="html">
+        <source>16 • 17 • 18 JULIO 2027</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8828850604077699588" datatype="html">
+        <source> La Historia que hizo vibrar a Tijuana en 2011 regresa para una nueva generación</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/dashboard/dashboard.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8997443140030962332" datatype="html">
+        <source> Solicita acreditaciones, entrevistas y material oficial. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/features/contact/contact.html</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="nav.menu" datatype="html">
