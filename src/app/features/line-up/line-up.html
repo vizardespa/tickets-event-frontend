@@ -8,7 +8,7 @@
 <div class="flex justify-center">
   <div class="relative w-full max-w-[72rem]">
     <div #container class="relative z-10 flex flex-col gap-6">
-      <span class="type-title">El REGRESO DEL FESTIVAL DE LA FRONTERA</span>
+      <span class="type-title" i18n>El REGRESO DEL FESTIVAL DE LA FRONTERA</span>
       <div flex class="flex flex-col gap-2">
         @for (line of visibleLines(); track $index) {
           <div [class]="bandSectionClass">
@@ -25,12 +25,13 @@
       </div>
       <div [class]="bandSectionClass + ' items-center'">
         <span
-          class="font-brunson w-[14rem] bg-[#FF7630] py-[0.5rem] text-center text-2xl tracking-wide"
+          class="w-[14rem] bg-[#FF7630] py-[0.5rem] text-center font-brunson text-2xl tracking-wide"
+          i18n
         >
           PROXIMAMENTE MAS BANDAS POR ANUNCIAR
         </span>
       </div>
-      <span class="font-coolvetica text-center text-base font-light text-white">
+      <span class="text-center font-coolvetica text-base font-light text-white" i18n>
         +50 bandas en total integraran el cartel de Tijuana Rockea 2027.
       </span>
     </div>

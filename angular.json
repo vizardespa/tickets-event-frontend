@@ -17,12 +17,23 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "es",
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "/en/"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
+            "polyfills": ["@angular/localize/init"],
             "tsConfig": "tsconfig.app.json",
+            "localize": true,
             "inlineStyleLanguage": "scss",
             "assets": [
               {
@@ -54,6 +65,12 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "es": {
+              "localize": ["es"]
             }
           },
           "defaultConfiguration": "production"
@@ -66,9 +83,27 @@
             },
             "development": {
               "buildTarget": "tickets-event-frontend:build:development"
+            },
+            "en": {
+              "buildTarget": "tickets-event-frontend:build:development,en"
+            },
+            "es": {
+              "buildTarget": "tickets-event-frontend:build:development,es"
             }
           },
           "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "ng-extract-i18n-merge:ng-extract-i18n-merge",
+          "options": {
+            "buildTarget": "tickets-event-frontend:build",
+            "format": "xlf",
+            "outputPath": "src/locale",
+            "sourceFile": "messages.xlf",
+            "targetFiles": ["messages.en.xlf"],
+            "includeContext": true,
+            "includeMeaningAndDescription": true
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test"

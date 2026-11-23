@@ -26,7 +26,13 @@
   </div>
 
   @if (collapsed()) {
-    <button matIconButton class="!text-white" aria-label="Menu" [matMenuTriggerFor]="navMenu">
+    <button
+      matIconButton
+      class="!text-white"
+      aria-label="Menu"
+      i18n-aria-label="@@nav.menu"
+      [matMenuTriggerFor]="navMenu"
+    >
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #navMenu="matMenu">

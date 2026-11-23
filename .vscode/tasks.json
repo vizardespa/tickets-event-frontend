@@ -14,6 +14,17 @@
       }
     },
     {
+      "label": "npm: start:en",
+      "type": "npm",
+      "script": "start:en",
+      "isBackground": true,
+      "problemMatcher": "$tsc",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      }
+    },
+    {
       "label": "npm: test",
       "type": "npm",
       "script": "test",
@@ -38,6 +49,12 @@
       "label": "npm: format",
       "type": "npm",
       "script": "format",
+      "problemMatcher": []
+    },
+    {
+      "label": "npm: extract-i18n",
+      "type": "npm",
+      "script": "extract-i18n",
       "problemMatcher": []
     }
   ]

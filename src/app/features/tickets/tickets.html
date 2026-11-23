@@ -3,8 +3,8 @@
 <div class="flex justify-center">
   <div class="w-full max-w-[72rem]">
     <div class="flex flex-col gap-4">
-      <span class="type-title">BOLETOS</span>
-      <span class="type-subtitle">Fases de Venta</span>
+      <span class="type-title" i18n>BOLETOS</span>
+      <span class="type-subtitle" i18n>Fases de Venta</span>
     </div>
 
     <div class="mt-[2rem] flex flex-col gap-[2rem]">
@@ -12,11 +12,13 @@
         <app-ticket-phase
           [ticketType]="phase1TicketType()"
           dateRangeLabel="16 NOVIEMBRE AL 31 DICIEMBRE"
+          i18n-dateRangeLabel
           (onClick)="onTicketClick($event)"
         />
         <app-ticket-phase
           [ticketType]="phase2TicketType()"
           dateRangeLabel="1 ENERO AL 28 FEBRERO"
+          i18n-dateRangeLabel
           imagePath="assets/img/TJ_GHOST.png"
           [forceDisplay]="true"
           (onClick)="onTicketClick($event)"
@@ -24,6 +26,7 @@
         <app-ticket-phase
           [ticketType]="phase3TicketType()"
           dateRangeLabel="1 MARZO AL 30 ABRIL"
+          i18n-dateRangeLabel
           (onClick)="onTicketClick($event)"
         />
       </div>
@@ -31,11 +34,13 @@
         <app-ticket-phase
           [ticketType]="phase4TicketType()"
           dateRangeLabel="1 MAYO AL 30 JUNIO"
+          i18n-dateRangeLabel
           (onClick)="onTicketClick($event)"
         />
         <app-ticket-phase
           [ticketType]="phase5TicketType()"
           dateRangeLabel="1 AL 16 JULIO"
+          i18n-dateRangeLabel
           (onClick)="onTicketClick($event)"
         />
       </div>
