@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+// Pivot at the neck so the skull swings from the base instead of its centre.
+.skull {
+  transform-origin: 50% 88%;
+  will-change: transform;
+}
+
+.skull--loop {
+  animation: skull-headbang 4s ease-in-out infinite;
+}
+
+.skull--once {
+  animation: skull-headbang 4s ease-in-out 3;
+}
+
+// Negative angles tilt the top of the skull to the left.
+@keyframes skull-headbang {
+  0% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(-22deg);
+  }
+  26% {
+    transform: rotate(-4deg);
+  }
+  38% {
+    transform: rotate(-20deg);
+  }
+  52% {
+    transform: rotate(-3deg);
+  }
+  64% {
+    transform: rotate(-18deg);
+  }
+  78% {
+    transform: rotate(-2deg);
+  }
+  88% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skull--loop,
+  .skull--once {
+    animation: none;
+  }
+}
