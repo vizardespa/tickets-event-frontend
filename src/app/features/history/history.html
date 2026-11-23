@@ -16,8 +16,14 @@
         </span>
       </div>
     </div>
-    <div class="flex justify-end">
-      <img src="assets/img/TJ_UFO.png" alt="Amplificador" class="h-[20rem]" />
+    <div class="flex justify-center md:justify-end">
+      <img
+        src="assets/img/TJ_UFO.png"
+        alt="Amplificador"
+        class="ufo h-[20rem]"
+        [class.ufo--loop]="ufoMotion() === 'loop'"
+        [class.ufo--once]="ufoMotion() === 'once'"
+      />
     </div>
   </div>
 </div>

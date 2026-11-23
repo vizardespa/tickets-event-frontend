@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+
+export type UfoMotion = 'loop' | 'once';
 
 @Component({
   selector: 'app-history',
@@ -6,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './history.html',
   styleUrl: './history.scss',
 })
-export class History {}
+export class History {
+  readonly ufoMotion = input<UfoMotion>('loop');
+}

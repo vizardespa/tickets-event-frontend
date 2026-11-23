@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+
+.ufo {
+  transform-origin: 50% 60%;
+  will-change: transform;
+}
+
+.ufo--loop {
+  animation: ufo-hover 5s ease-in-out infinite;
+}
+
+.ufo--once {
+  animation: ufo-hover 6s ease-in-out 2;
+}
+
+@keyframes ufo-hover {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-0.6rem) rotate(-5deg);
+  }
+  40% {
+    transform: translateY(-0.9rem) rotate(0deg);
+  }
+  60% {
+    transform: translateY(-0.4rem) rotate(5deg);
+  }
+  80% {
+    transform: translateY(0.2rem) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ufo--loop,
+  .ufo--once {
+    animation: none;
+  }
+}
