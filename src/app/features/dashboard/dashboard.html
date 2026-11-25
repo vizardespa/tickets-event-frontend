@@ -14,11 +14,11 @@
           >
         </div>
       </div>
-      <div class="md:pt-[2rem]">
+      <div class="flex justify-center pt-[2rem] md:justify-end">
         <img
           src="assets/img/TJ_SKULL.png"
           alt="Calavera Rockera"
-          class="skull h-[18rem] min-w-[14rem]"
+          class="skull h-[15rem] min-w-[14rem] md:h-[18rem]"
           [class.skull--loop]="skullMotion() === 'loop'"
           [class.skull--once]="skullMotion() === 'once'"
         />
@@ -57,7 +57,7 @@
           <span class="type-lead" i18n>Merch oficial del festival</span>
         </div>
       </div>
-      <div class="pt-[2rem] md:pt-[5rem]">
+      <div class="flex justify-center pt-[2rem] md:justify-end md:pt-[5rem]">
         <div
           class="amp"
           [class.amp--loop]="ampMotion() === 'loop'"
