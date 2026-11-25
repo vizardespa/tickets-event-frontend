@@ -56,6 +56,18 @@
       "type": "npm",
       "script": "extract-i18n",
       "problemMatcher": []
+    },
+    {
+      "label": "npm: deploy",
+      "detail": "Build and deploy to S3 using the credentials in .env",
+      "type": "npm",
+      "script": "deploy",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
     }
   ]
 }
