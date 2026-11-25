@@ -1,6 +1,7 @@
 <div class="relative">
   <div
-    class="flex h-[16rem] w-[14rem] flex-col items-center justify-center gap-4 bg-[#171616]"
+    class="ticket-phase flex h-[16rem] w-[14rem] flex-col items-center justify-center gap-4 bg-[#171616]"
+    [class.ticket-phase--current]="isCurrentPhase()"
     [class.cursor-pointer]="isCurrentPhase()"
     [class.hover:bg-[#FF7630]]="isCurrentPhase()"
     (click)="isCurrentPhase() && onClick.emit(ticketType())"
@@ -13,7 +14,7 @@
           GENERAL: ${{ ticketType()?.price | number: '1.0-0' }}
         </span>
       </div>
-      <img src="{{ imagePath() }}" alt="Mano" class="h-[8rem]" />
+      <img src="{{ imagePath() }}" alt="Mano" class="ticket-phase__image h-[8rem]" />
     } @else {
       <span class="font-brunson text-[7rem] text-white">???</span>
     }

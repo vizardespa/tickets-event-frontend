@@ -1,0 +1,89 @@
+:host {
+  display: block;
+}
+
+// Pivot at the bottom edge so the artwork rocks like a standing figure instead
+// of spinning around its centre.
+.ticket-phase__image {
+  transform-origin: 50% 100%;
+}
+
+// The whole card is the hover target, but only the artwork tilts.
+.ticket-phase--current:hover .ticket-phase__image {
+  will-change: transform;
+  animation: ticket-tilt 1.8s linear infinite;
+}
+
+// Sampled from a sine wave and run with `linear` timing, so the swing keeps a
+// constant rhythm instead of easing to a stop at each extreme.
+@keyframes ticket-tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(0.93deg);
+  }
+  10% {
+    transform: rotate(1.76deg);
+  }
+  15% {
+    transform: rotate(2.43deg);
+  }
+  20% {
+    transform: rotate(2.85deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  30% {
+    transform: rotate(2.85deg);
+  }
+  35% {
+    transform: rotate(2.43deg);
+  }
+  40% {
+    transform: rotate(1.76deg);
+  }
+  45% {
+    transform: rotate(0.93deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  55% {
+    transform: rotate(-0.93deg);
+  }
+  60% {
+    transform: rotate(-1.76deg);
+  }
+  65% {
+    transform: rotate(-2.43deg);
+  }
+  70% {
+    transform: rotate(-2.85deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+  80% {
+    transform: rotate(-2.85deg);
+  }
+  85% {
+    transform: rotate(-2.43deg);
+  }
+  90% {
+    transform: rotate(-1.76deg);
+  }
+  95% {
+    transform: rotate(-0.93deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket-phase--current:hover .ticket-phase__image {
+    animation: none;
+  }
+}
