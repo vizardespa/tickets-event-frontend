@@ -10,38 +10,37 @@
     <div class="mt-[2rem] flex flex-col gap-[2rem]">
       <div [class]="ticketPhaseContainerClass">
         <app-ticket-phase
-          [ticketType]="phase1TicketType()"
-          dateRangeLabel="16 NOVIEMBRE AL 31 DICIEMBRE"
-          i18n-dateRangeLabel
-          (onClick)="onTicketClick($event)"
+          [ticketType]="tickets[0]"
+          [dateRangeLabel]="tickets[0].dateRangeLabel"
+          [imagePath]="tickets[0].imagePath"
+          (onClick)="onTicketClick()"
         />
         <app-ticket-phase
-          [ticketType]="phase2TicketType()"
-          dateRangeLabel="1 ENERO AL 28 FEBRERO"
-          i18n-dateRangeLabel
-          imagePath="assets/img/TJ_GHOST.png"
+          [ticketType]="tickets[1]"
+          [dateRangeLabel]="tickets[1].dateRangeLabel"
+          [imagePath]="tickets[1].imagePath"
           [forceDisplay]="true"
-          (onClick)="onTicketClick($event)"
+          (onClick)="onTicketClick()"
         />
         <app-ticket-phase
-          [ticketType]="phase3TicketType()"
-          dateRangeLabel="1 MARZO AL 30 ABRIL"
-          i18n-dateRangeLabel
-          (onClick)="onTicketClick($event)"
+          [ticketType]="tickets[2]"
+          [dateRangeLabel]="tickets[2].dateRangeLabel"
+          [imagePath]="tickets[2].imagePath"
+          (onClick)="onTicketClick()"
         />
       </div>
       <div [class]="ticketPhaseContainerClass">
         <app-ticket-phase
-          [ticketType]="phase4TicketType()"
-          dateRangeLabel="1 MAYO AL 30 JUNIO"
-          i18n-dateRangeLabel
-          (onClick)="onTicketClick($event)"
+          [ticketType]="tickets[3]"
+          [dateRangeLabel]="tickets[3].dateRangeLabel"
+          [imagePath]="tickets[3].imagePath"
+          (onClick)="onTicketClick()"
         />
         <app-ticket-phase
-          [ticketType]="phase5TicketType()"
-          dateRangeLabel="1 AL 16 JULIO"
-          i18n-dateRangeLabel
-          (onClick)="onTicketClick($event)"
+          [ticketType]="tickets[4]"
+          [dateRangeLabel]="tickets[4].dateRangeLabel"
+          [imagePath]="tickets[4].imagePath"
+          (onClick)="onTicketClick()"
         />
       </div>
     </div>

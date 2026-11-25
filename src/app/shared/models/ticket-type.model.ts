@@ -16,6 +16,11 @@ export interface TicketType {
   createdAt: string;
 }
 
+export type TicketTypePhase = Omit<TicketType, 'id' | 'eventId' | 'createdAt'> & {
+  dateRangeLabel: string;
+  imagePath: string;
+};
+
 /**
  * Returns whether `ticketType` is currently within its purchase window (if any is defined).
  */

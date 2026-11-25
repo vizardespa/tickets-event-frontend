@@ -1,6 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
-import { TicketType } from '../../../shared/models/ticket-type.model';
+import { TicketType, TicketTypePhase } from '../../../shared/models/ticket-type.model';
 
 @Component({
   selector: 'app-ticket-phase',
@@ -9,7 +9,7 @@ import { TicketType } from '../../../shared/models/ticket-type.model';
   styleUrl: './ticket-phase.scss',
 })
 export class TicketPhase {
-  ticketType = input<TicketType>();
+  ticketType = input<TicketType | TicketTypePhase>();
   // TODO: Make this dynamic based on the ticket type's start and end dates, instead of hardcoding it.
   // Needs to research how to do it in a human readable way...
   dateRangeLabel = input<string>();
@@ -17,7 +17,7 @@ export class TicketPhase {
 
   imagePath = input<string>('assets/img/TJ_MANO.png');
 
-  onClick = output<TicketType | undefined>();
+  onClick = output<TicketType | TicketTypePhase | undefined>();
 
   name = computed(() => {
     const ticketType = this.ticketType();
