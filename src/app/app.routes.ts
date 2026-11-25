@@ -17,5 +17,5 @@ export const routes: Routes = [
   { path: 'merch', component: Merch },
   { path: 'contact', component: Contact },
   { path: 'history', component: History },
-  { path: '**', redirectTo: 'events' },
+  { path: '**', redirectTo: 'home' },
 ];

@@ -33,6 +33,7 @@
             "browser": "src/main.ts",
             "polyfills": ["@angular/localize/init"],
             "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/tickets-event-frontend",
             "localize": true,
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -107,6 +108,10 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "@local/aws-deploy:deploy",
+          "options": {}
         }
       }
     }

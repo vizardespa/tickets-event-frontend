@@ -11,6 +11,7 @@
     "build:en": "ng build --configuration=en",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "deploy": "node --env-file-if-exists=.env node_modules/@angular/cli/bin/ng.js deploy",
     "extract-i18n": "ng extract-i18n",
     "format": "prettier --write \"src/**/*.{ts,html,scss,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\""
@@ -35,6 +36,8 @@
     "@angular/build": "^21.2.20",
     "@angular/cli": "^21.2.20",
     "@angular/compiler-cli": "^21.2.0",
+    "@jefiozie/ngx-aws-deploy": "^5.1.0",
+    "@local/aws-deploy": "file:tools/aws-deploy",
     "autoprefixer": "^10.5.4",
     "jsdom": "^28.0.0",
     "ng-extract-i18n-merge": "^3.5.0",

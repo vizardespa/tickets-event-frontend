@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "deploy": {
+      "implementation": "./index.js",
+      "schema": "./schema.json",
+      "description": "Deploy to AWS S3 with @jefiozie/ngx-aws-deploy."
+    }
+  }
+}

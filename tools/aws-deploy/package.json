@@ -1,0 +1,7 @@
+{
+  "name": "@local/aws-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "builders": "./builders.json"
+}
