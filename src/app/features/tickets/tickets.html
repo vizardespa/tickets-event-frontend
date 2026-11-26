@@ -13,15 +13,15 @@
           [ticketType]="tickets[0]"
           [dateRangeLabel]="tickets[0].dateRangeLabel"
           [imagePath]="tickets[0].imagePath"
-          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
+          [useDateRangeValidation]="useDateRangeValidation"
           (onClick)="onTicketClick()"
         />
         <app-ticket-phase
           [ticketType]="tickets[1]"
           [dateRangeLabel]="tickets[1].dateRangeLabel"
           [imagePath]="tickets[1].imagePath"
-          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
-          [forceDisplay]="true"
+          [useDateRangeValidation]="useDateRangeValidation"
+          [alwaysShowDetails]="true"
           (onClick)="onTicketClick()"
         />
       </div>
@@ -30,14 +30,14 @@
           [ticketType]="tickets[2]"
           [dateRangeLabel]="tickets[2].dateRangeLabel"
           [imagePath]="tickets[2].imagePath"
-          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
+          [useDateRangeValidation]="useDateRangeValidation"
           (onClick)="onTicketClick()"
         />
         <app-ticket-phase
           [ticketType]="tickets[3]"
           [dateRangeLabel]="tickets[3].dateRangeLabel"
           [imagePath]="tickets[3].imagePath"
-          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
+          [useDateRangeValidation]="useDateRangeValidation"
           (onClick)="onTicketClick()"
         />
       </div>

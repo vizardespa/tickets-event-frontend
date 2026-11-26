@@ -10,7 +10,7 @@ import { TicketPhase } from './ticket-phase/ticket-phase';
 })
 export class Tickets {
   // Turn off all date-based phase logic (past/future/AGOTADO) on this static list.
-  readonly isDateRangeValidationEnable = false;
+  readonly useDateRangeValidation = false;
 
   tickets: TicketTypePhase[] = [
     {

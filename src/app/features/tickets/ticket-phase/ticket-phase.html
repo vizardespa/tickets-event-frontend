@@ -1,24 +1,24 @@
 <div class="relative">
   <div
     class="ticket-phase flex h-[16rem] w-[14rem] flex-col items-center justify-center gap-4 bg-[#171616]"
-    [class.ticket-phase--current]="isCurrentPhase() && ticketType()?.purchasable"
-    [class.cursor-pointer]="isCurrentPhase() && ticketType()?.purchasable"
-    [class.hover:bg-[#FF7630]]="isCurrentPhase() && ticketType()?.purchasable"
-    (click)="isCurrentPhase() && ticketType()?.purchasable && onClick.emit(ticketType())"
+    [class.ticket-phase--current]="isSelectable()"
+    [class.cursor-pointer]="isSelectable()"
+    [class.hover:bg-[#FF7630]]="isSelectable()"
+    (click)="isSelectable() && onClick.emit(ticketType())"
   >
-    @if (ticketType() && (isCurrentPhase() || forceDisplay())) {
+    @if (showDetails()) {
       <span
         class="font-coolvetica text-white"
-        [class.text-xl]="showDateRangeLabel()"
-        [class.text-3xl]="!showDateRangeLabel()"
+        [class.text-xl]="shouldShowDateRangeLabel()"
+        [class.text-3xl]="!shouldShowDateRangeLabel()"
       >
         {{ name() }}
       </span>
       <div class="flex flex-col items-center justify-center">
-        @if (showDateRangeLabel()) {
+        @if (shouldShowDateRangeLabel()) {
           <span class="font-coolvetica text-white">{{ dateRangeLabel() }}</span>
         }
-        <span class="font-coolvetica text-white" [class.text-lg]="!showDateRangeLabel()">
+        <span class="font-coolvetica text-white" [class.text-lg]="!shouldShowDateRangeLabel()">
           GENERAL: ${{ ticketType()?.price | number: '1.0-0' }}
         </span>
       </div>
@@ -26,13 +26,13 @@
         src="{{ imagePath() }}"
         alt="Mano"
         class="ticket-phase__image"
-        [style.height.rem]="showDateRangeLabel() ? 8 : 8.5"
+        [style.height.rem]="shouldShowDateRangeLabel() ? 8 : 8.5"
       />
     } @else {
       <span class="font-brunson text-[7rem] text-white">???</span>
     }
   </div>
-  @if (ticketType() && (isPastPhase() || !ticketType()?.purchasable)) {
+  @if (isSoldOut()) {
     <span
       class="absolute bottom-[6rem] left-[-0.5rem] w-[15rem] bg-[#FF4400] py-[0.5rem] text-center font-brunson text-4xl tracking-wide"
       i18n

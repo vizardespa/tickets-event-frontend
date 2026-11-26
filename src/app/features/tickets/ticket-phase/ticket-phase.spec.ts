@@ -12,6 +12,7 @@ const pastPhase: TicketTypePhase = {
   dateRangeLabel: '1 ENERO AL 31 DICIEMBRE',
   imagePath: '',
   purchasable: true,
+  isCurrentPhase: false,
 };
 
 const futurePhase: TicketTypePhase = {
@@ -52,17 +53,37 @@ describe('TicketPhase', () => {
   });
 
   it('ignores every date when date validation is disabled', () => {
-    fixture.componentRef.setInput('isDateRangeValidationEnable', false);
+    fixture.componentRef.setInput('useDateRangeValidation', false);
 
     fixture.componentRef.setInput('ticketType', pastPhase);
     expect(component.isPastPhase()).toBe(false);
     expect(component.isFuturePhase()).toBe(false);
-    expect(component.isCurrentPhase()).toBe(true);
+    expect(component.isCurrentPhase()).toBe(false);
 
     fixture.componentRef.setInput('ticketType', futurePhase);
     expect(component.isPastPhase()).toBe(false);
     expect(component.isFuturePhase()).toBe(false);
+    expect(component.isCurrentPhase()).toBe(false);
+  });
+
+  it('falls back to the ticket type current phase flag when date validation is disabled', () => {
+    fixture.componentRef.setInput('useDateRangeValidation', false);
+    fixture.componentRef.setInput('ticketType', { ...pastPhase, isCurrentPhase: true });
+
     expect(component.isCurrentPhase()).toBe(true);
+  });
+
+  it('is selectable only when the phase is current and purchasable', () => {
+    fixture.componentRef.setInput('useDateRangeValidation', false);
+    fixture.componentRef.setInput('ticketType', { ...pastPhase, isCurrentPhase: true });
+    expect(component.isSelectable()).toBe(true);
+
+    fixture.componentRef.setInput('ticketType', {
+      ...pastPhase,
+      isCurrentPhase: true,
+      purchasable: false,
+    });
+    expect(component.isSelectable()).toBe(false);
   });
 
   it('shows the sold-out message when the ticket type is not purchasable', () => {
@@ -74,36 +95,38 @@ describe('TicketPhase', () => {
     });
     fixture.detectChanges();
 
+    expect(component.isSoldOut()).toBe(true);
     expect(fixture.nativeElement.textContent).toContain('AGOTADO');
   });
 
-  it('shows phase details when the incoming placeholder is disabled', () => {
+  it('shows phase details when alwaysShowDetails is enabled', () => {
     fixture.componentRef.setInput('ticketType', futurePhase);
-    fixture.componentRef.setInput('forceDisplay', true);
-    fixture.componentRef.setInput('showIncomingPlaceholder', false);
+    fixture.componentRef.setInput('alwaysShowDetails', true);
     fixture.detectChanges();
 
+    expect(component.showDetails()).toBe(true);
     expect(fixture.nativeElement.textContent).not.toContain('???');
     expect(fixture.nativeElement.textContent).toContain('TIJUANA');
   });
 
   it('hides the date range by default and enlarges the name and image', () => {
     fixture.componentRef.setInput('ticketType', futurePhase);
-    fixture.componentRef.setInput('forceDisplay', true);
-    fixture.componentRef.setInput('showIncomingPlaceholder', false);
+    fixture.componentRef.setInput('alwaysShowDetails', true);
     fixture.componentRef.setInput('dateRangeLabel', '1 ENERO AL 31 DICIEMBRE');
     fixture.detectChanges();
 
     const name = fixture.nativeElement.querySelector('.ticket-phase > span');
     const image = fixture.nativeElement.querySelector('.ticket-phase__image');
 
+    expect(component.shouldShowDateRangeLabel()).toBe(false);
     expect(fixture.nativeElement.textContent).not.toContain('1 ENERO AL 31 DICIEMBRE');
     expect(name.classList).toContain('text-3xl');
-    expect(image.style.height).toBe('10rem');
+    expect(image.style.height).toBe('8.5rem');
 
-    fixture.componentRef.setInput('hideDateRangeLabel', false);
+    fixture.componentRef.setInput('showDateRangeLabel', true);
     fixture.detectChanges();
 
+    expect(component.shouldShowDateRangeLabel()).toBe(true);
     expect(fixture.nativeElement.textContent).toContain('1 ENERO AL 31 DICIEMBRE');
     expect(name.classList).toContain('text-xl');
     expect(image.style.height).toBe('8rem');
