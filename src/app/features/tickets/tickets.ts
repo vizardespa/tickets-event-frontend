@@ -36,7 +36,7 @@ export class Tickets {
     {
       name: $localize`Rockea`,
       description: $localize`Boleto General Fase Rockea`,
-      price: 2150,
+      price: 2450,
       purchaseStartAt: '2027-03-01T00:00:00Z',
       purchaseEndAt: '2027-04-30T23:59:59Z',
       dateRangeLabel: $localize`1 MARZO AL 30 ABRIL`,
@@ -46,7 +46,7 @@ export class Tickets {
     {
       name: $localize`Punk`,
       description: $localize`Boleto General Fase Punk`,
-      price: 2550,
+      price: 2950,
       purchaseStartAt: '2027-05-01T00:00:00Z',
       purchaseEndAt: '2027-06-30T23:59:59Z',
       dateRangeLabel: $localize`1 MAYO AL 30 JUNIO`,

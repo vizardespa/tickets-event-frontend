@@ -14,12 +14,12 @@ export interface TicketType {
   purchaseStartAt: string | null;
   purchaseEndAt: string | null;
   createdAt: string;
+  purchasable: boolean;
 }
 
 export type TicketTypePhase = Omit<TicketType, 'id' | 'eventId' | 'createdAt'> & {
   dateRangeLabel: string;
   imagePath: string;
-  purchasable: boolean;
 };
 
 /**
