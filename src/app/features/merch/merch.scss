@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+.guitar {
+  transform-origin: 28% 78%;
+  will-change: transform;
+  animation: guitar-rock 4.6s ease-in-out infinite;
+}
+
+.guitar__img {
+  display: block;
+  transform-origin: 28% 78%;
+  will-change: transform;
+  animation: guitar-strum 1.15s ease-in-out infinite;
+}
+
+@keyframes guitar-rock {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  18% {
+    transform: rotate(-4deg) translateY(-0.35rem);
+  }
+  38% {
+    transform: rotate(1.5deg) translateY(0.1rem);
+  }
+  58% {
+    transform: rotate(5deg) translateY(-0.25rem);
+  }
+  78% {
+    transform: rotate(-1.5deg) translateY(0.15rem);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+}
+
+@keyframes guitar-strum {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  12% {
+    transform: rotate(-1.2deg) translate3d(-1px, 1px, 0);
+  }
+  24% {
+    transform: rotate(1deg) translate3d(1px, -1px, 0);
+  }
+  36% {
+    transform: rotate(-0.8deg) translate3d(-1px, 0, 0);
+  }
+  48% {
+    transform: rotate(0.6deg) translate3d(1px, 1px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guitar,
+  .guitar__img {
+    animation: none;
+  }
+}
