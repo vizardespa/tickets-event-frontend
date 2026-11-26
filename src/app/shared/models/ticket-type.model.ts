@@ -19,6 +19,7 @@ export interface TicketType {
 export type TicketTypePhase = Omit<TicketType, 'id' | 'eventId' | 'createdAt'> & {
   dateRangeLabel: string;
   imagePath: string;
+  purchasable: boolean;
 };
 
 /**

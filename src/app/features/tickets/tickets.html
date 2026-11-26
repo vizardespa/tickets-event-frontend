@@ -13,33 +13,33 @@
           [ticketType]="tickets[0]"
           [dateRangeLabel]="tickets[0].dateRangeLabel"
           [imagePath]="tickets[0].imagePath"
+          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
           (onClick)="onTicketClick()"
         />
         <app-ticket-phase
           [ticketType]="tickets[1]"
           [dateRangeLabel]="tickets[1].dateRangeLabel"
           [imagePath]="tickets[1].imagePath"
+          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
           [forceDisplay]="true"
-          (onClick)="onTicketClick()"
-        />
-        <app-ticket-phase
-          [ticketType]="tickets[2]"
-          [dateRangeLabel]="tickets[2].dateRangeLabel"
-          [imagePath]="tickets[2].imagePath"
           (onClick)="onTicketClick()"
         />
       </div>
       <div [class]="ticketPhaseContainerClass">
         <app-ticket-phase
-          [ticketType]="tickets[3]"
-          [dateRangeLabel]="tickets[3].dateRangeLabel"
-          [imagePath]="tickets[3].imagePath"
+          [ticketType]="tickets[2]"
+          [dateRangeLabel]="tickets[2].dateRangeLabel"
+          [imagePath]="tickets[2].imagePath"
+          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
+          [forceDisplay]="true"
           (onClick)="onTicketClick()"
         />
         <app-ticket-phase
-          [ticketType]="tickets[4]"
-          [dateRangeLabel]="tickets[4].dateRangeLabel"
-          [imagePath]="tickets[4].imagePath"
+          [ticketType]="tickets[3]"
+          [dateRangeLabel]="tickets[3].dateRangeLabel"
+          [imagePath]="tickets[3].imagePath"
+          [isDateRangeValidationEnable]="isDateRangeValidationEnable"
+          [forceDisplay]="true"
           (onClick)="onTicketClick()"
         />
       </div>

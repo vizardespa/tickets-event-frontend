@@ -9,6 +9,9 @@ import { TicketPhase } from './ticket-phase/ticket-phase';
   styleUrl: './tickets.scss',
 })
 export class Tickets {
+  // Turn off all date-based phase logic (past/future/AGOTADO) on this static list.
+  readonly isDateRangeValidationEnable = false;
+
   tickets: TicketTypePhase[] = [
     {
       name: $localize`Comunidad`,
@@ -17,7 +20,8 @@ export class Tickets {
       purchaseStartAt: '2026-11-16T00:00:00Z',
       purchaseEndAt: '2026-12-31T23:59:59Z',
       dateRangeLabel: $localize`16 NOVIEMBRE AL 31 DICIEMBRE`,
-      imagePath: 'assets/img/TJ_MANO.png',
+      imagePath: 'assets/img/TJ_GHOST.png',
+      purchasable: true,
     },
     {
       name: 'Tijuana',
@@ -26,7 +30,8 @@ export class Tickets {
       purchaseStartAt: '2027-01-01T00:00:00Z',
       purchaseEndAt: '2027-02-28T23:59:59Z',
       dateRangeLabel: $localize`1 ENERO AL 28 FEBRERO`,
-      imagePath: 'assets/img/TJ_GHOST.png',
+      imagePath: 'assets/img/TJ_CEBRA.png',
+      purchasable: true,
     },
     {
       name: $localize`Rockea`,
@@ -35,25 +40,18 @@ export class Tickets {
       purchaseStartAt: '2027-03-01T00:00:00Z',
       purchaseEndAt: '2027-04-30T23:59:59Z',
       dateRangeLabel: $localize`1 MARZO AL 30 ABRIL`,
-      imagePath: '',
+      imagePath: 'assets/img/TJ_MANO.png',
+      purchasable: true,
     },
     {
-      name: $localize`Frontera`,
-      description: $localize`Boleto General Fase Frontera`,
+      name: $localize`Punk`,
+      description: $localize`Boleto General Fase Punk`,
       price: 2550,
       purchaseStartAt: '2027-05-01T00:00:00Z',
       purchaseEndAt: '2027-06-30T23:59:59Z',
       dateRangeLabel: $localize`1 MAYO AL 30 JUNIO`,
-      imagePath: '',
-    },
-    {
-      name: $localize`Julio`,
-      description: $localize`Boleto General Mes Julio`,
-      price: 2950,
-      purchaseStartAt: '2027-07-01T00:00:00Z',
-      purchaseEndAt: '2027-07-16T23:59:59Z',
-      dateRangeLabel: $localize`1 AL 16 JULIO`,
-      imagePath: '',
+      imagePath: 'assets/img/TJ_SKULL.png',
+      purchasable: true,
     },
   ];
 

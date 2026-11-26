@@ -14,6 +14,8 @@ export class TicketPhase {
   // Needs to research how to do it in a human readable way...
   dateRangeLabel = input<string>();
   forceDisplay = input<boolean>(false);
+  // When false, every phase is treated as current: no past/future checks, no "AGOTADO" badge.
+  isDateRangeValidationEnable = input<boolean>(true);
 
   imagePath = input<string>('assets/img/TJ_MANO.png');
 
@@ -27,7 +29,7 @@ export class TicketPhase {
   });
 
   isPastPhase = computed(() => {
-    if (!this.ticketType()) {
+    if (!this.isDateRangeValidationEnable() || !this.ticketType()) {
       return false;
     }
     const now = new Date();
@@ -38,7 +40,7 @@ export class TicketPhase {
   });
 
   isFuturePhase = computed(() => {
-    if (!this.ticketType()) {
+    if (!this.isDateRangeValidationEnable() || !this.ticketType()) {
       return false;
     }
     const now = new Date();
