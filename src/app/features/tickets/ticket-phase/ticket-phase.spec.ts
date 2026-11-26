@@ -1,3 +1,6 @@
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { LOCALE_ID } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TicketTypePhase } from '../../../shared/models/ticket-type.model';
 
@@ -130,5 +133,25 @@ describe('TicketPhase', () => {
     expect(fixture.nativeElement.textContent).toContain('1 ENERO AL 31 DICIEMBRE');
     expect(name.classList).toContain('text-xl');
     expect(image.style.height).toBe('8rem');
+  });
+});
+
+describe('TicketPhase price formatting', () => {
+  beforeEach(async () => {
+    registerLocaleData(localeEs);
+    await TestBed.configureTestingModule({
+      imports: [TicketPhase],
+      providers: [{ provide: LOCALE_ID, useValue: 'es' }],
+    }).compileComponents();
+  });
+
+  it('groups thousands with a comma even though the app locale uses a dot', () => {
+    const fixture = TestBed.createComponent(TicketPhase);
+    fixture.componentRef.setInput('ticketType', pastPhase);
+    fixture.componentRef.setInput('alwaysShowDetails', true);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toContain('$1,350');
+    expect(fixture.nativeElement.textContent).not.toContain('$1.350');
   });
 });

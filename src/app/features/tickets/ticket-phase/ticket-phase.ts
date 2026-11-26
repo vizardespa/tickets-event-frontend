@@ -9,6 +9,10 @@ import { TicketType, TicketTypePhase } from '../../../shared/models/ticket-type.
   styleUrl: './ticket-phase.scss',
 })
 export class TicketPhase {
+  // The app's source locale is `es`, which groups thousands with a dot ("1.350").
+  // Prices are shown with a comma ("1,350"), so the number pipe is pinned to a comma-grouping locale.
+  readonly priceLocale = 'en-US';
+
   ticketType = input<TicketType | TicketTypePhase>();
   // TODO: Make this dynamic based on the ticket type's start and end dates, instead of hardcoding it.
   // Needs to research how to do it in a human readable way...

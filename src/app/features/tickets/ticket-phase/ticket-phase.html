@@ -19,7 +19,7 @@
           <span class="font-coolvetica text-white">{{ dateRangeLabel() }}</span>
         }
         <span class="font-coolvetica text-white" [class.text-lg]="!shouldShowDateRangeLabel()">
-          GENERAL: ${{ ticketType()?.price | number: '1.0-0' }}
+          GENERAL: ${{ ticketType()?.price | number: '1.0-0' : priceLocale }}
         </span>
       </div>
       <img
