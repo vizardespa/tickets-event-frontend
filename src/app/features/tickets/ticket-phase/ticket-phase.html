@@ -1,23 +1,12 @@
 <div class="relative">
   <div
     class="ticket-phase flex h-[16rem] w-[14rem] flex-col items-center justify-center gap-4 bg-[#171616]"
-    [class.ticket-phase--current]="
-      isCurrentPhase() && ticketType()?.purchasable && !showIncomingPlaceholder()
-    "
-    [class.cursor-pointer]="
-      isCurrentPhase() && ticketType()?.purchasable && !showIncomingPlaceholder()
-    "
-    [class.hover:bg-[#FF7630]]="
-      isCurrentPhase() && ticketType()?.purchasable && !showIncomingPlaceholder()
-    "
-    (click)="
-      isCurrentPhase() &&
-        ticketType()?.purchasable &&
-        !showIncomingPlaceholder() &&
-        onClick.emit(ticketType())
-    "
+    [class.ticket-phase--current]="isCurrentPhase() && ticketType()?.purchasable"
+    [class.cursor-pointer]="isCurrentPhase() && ticketType()?.purchasable"
+    [class.hover:bg-[#FF7630]]="isCurrentPhase() && ticketType()?.purchasable"
+    (click)="isCurrentPhase() && ticketType()?.purchasable && onClick.emit(ticketType())"
   >
-    @if (ticketType() && (isCurrentPhase() || forceDisplay()) && !showIncomingPlaceholder()) {
+    @if (ticketType() && (isCurrentPhase() || forceDisplay())) {
       <span
         class="font-coolvetica text-white"
         [class.text-xl]="showDateRangeLabel()"

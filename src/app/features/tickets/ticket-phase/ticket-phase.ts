@@ -15,7 +15,6 @@ export class TicketPhase {
   dateRangeLabel = input<string>();
   hideDateRangeLabel = input<boolean>(true);
   forceDisplay = input<boolean>(false);
-  showIncomingPlaceholder = input<boolean>(true);
   // When false, every phase is treated as current: no past/future checks, no "AGOTADO" badge.
   isDateRangeValidationEnable = input<boolean>(true);
 
@@ -57,6 +56,11 @@ export class TicketPhase {
   });
 
   isCurrentPhase = computed(() => {
-    return !this.isPastPhase() && !this.isFuturePhase();
+    const isDateRangeValidationEnable = this.isDateRangeValidationEnable();
+
+    if (isDateRangeValidationEnable) {
+      return !this.isPastPhase() && !this.isFuturePhase();
+    }
+    return this.ticketType()?.isCurrentPhase;
   });
 }

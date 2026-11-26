@@ -22,6 +22,7 @@ export class Tickets {
       dateRangeLabel: $localize`16 NOVIEMBRE AL 31 DICIEMBRE`,
       imagePath: 'assets/img/TJ_GHOST.png',
       purchasable: true,
+      isCurrentPhase: true,
     },
     {
       name: 'Tijuana',
@@ -32,6 +33,7 @@ export class Tickets {
       dateRangeLabel: $localize`1 ENERO AL 28 FEBRERO`,
       imagePath: 'assets/img/TJ_CEBRA.png',
       purchasable: true,
+      isCurrentPhase: false,
     },
     {
       name: $localize`Rockea`,
@@ -42,6 +44,7 @@ export class Tickets {
       dateRangeLabel: $localize`1 MARZO AL 30 ABRIL`,
       imagePath: 'assets/img/TJ_MANO.png',
       purchasable: true,
+      isCurrentPhase: false,
     },
     {
       name: $localize`Punk`,
@@ -52,6 +55,7 @@ export class Tickets {
       dateRangeLabel: $localize`1 MAYO AL 30 JUNIO`,
       imagePath: 'assets/img/TJ_SKULL.png',
       purchasable: true,
+      isCurrentPhase: false,
     },
   ];
 

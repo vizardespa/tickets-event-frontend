@@ -15,6 +15,7 @@ export interface TicketType {
   purchaseEndAt: string | null;
   createdAt: string;
   purchasable: boolean;
+  isCurrentPhase: boolean;
 }
 
 export type TicketTypePhase = Omit<TicketType, 'id' | 'eventId' | 'createdAt'> & {
